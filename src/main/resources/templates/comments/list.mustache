@@ -1,0 +1,90 @@
+<!-- 댓글 목록 -->
+<div class="card text-dark bg-light mb-3" style="max-width: 18rem; margin: 10px; margin-top: 30px; ">
+    {{#commentList}}
+    <div class="card-header">
+        {{nickname}}
+        <!-- Button trigger modal -->
+        <button type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#comment-edit-modal"
+                data-bs-id="{{id}}"
+                data-bs-nickname="{{nickname}}"
+                data-bs-body="{{body}}"
+                data-bs-article-id="{{articleId}}">수정</button>
+        <!-- Delete Button -->
+        <button type="button"
+                class="btn btn-sm btn-outline-danger comment-delete-btn"
+                data-comment-id="{{id}}">삭제</button>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{body}}</p>
+    </div>
+    {{/commentList}}
+</div>
+
+<!-- 댓글 작성폼 -->
+<div class="card text-dark bg-light mb-3 center" style="max-width: 18rem; margin: 10px; margin-top: 30px; ">
+    <div class="card-body">
+        <form id="create-comment-form">
+            <!-- 닉네임 입력 -->
+            <div class="mb-3" >
+                <label class="form-label">UserName</label>
+                <input type="email" class="form-control" id="new-comment-nickname">
+            </div>
+            <!-- 댓글 본문 입력 -->
+            <div class="mb-3">
+                <label class="form-label">Content</label>
+                <textarea class="form-control" rows="3" id="new-comment-body"></textarea>
+            </div>
+            <!-- 히든 인풋 (articleId를 전송하기 위함) -->
+            {{#article}}
+            <input type="hidden" id="new-comment-article-id" value="{{id}}">
+            {{/article}}
+            <!-- 전송 버튼 -->
+        </form>
+        <button type="button" id="create-comment-btn" class="btn btn-outline-primary">댓글 작성</button>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="comment-edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">댓글 수정</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 댓글 수정폼 -->
+                <div class="card text-dark bg-light mb-3 center" style="max-width: 18rem; margin: 10px; margin-top: 30px; ">
+                    <div class="card-body">
+                        <form id="edit-comment-form">
+                            <!-- 닉네임 입력 -->
+                            <div class="mb-3" >
+                                <label class="form-label">UserName</label>
+                                <input type="text" class="form-control" id="edit-comment-nickname">
+                            </div>
+                            <!-- 댓글 본문 입력 -->
+                            <div class="mb-3">
+                                <label class="form-label">Content</label>
+                                <textarea class="form-control" rows="3" id="edit-comment-body"></textarea>
+                            </div>
+                            <!-- 히든 인풋 (articleId와 id 전송) -->
+                            <input type="hidden" id="edit-comment-id">
+                            <input type="hidden" id="edit-comment-article-id">
+
+                        </form>
+                        <!-- 전송 버튼 -->
+                        <button type="button" id="edit-comment-btn" class="btn btn-outline-primary">수정 완료</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/comment.js"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/delComment.js"></script>
