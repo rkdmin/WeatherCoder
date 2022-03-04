@@ -13,7 +13,7 @@ function clickCreateCommentBtn(){
     console.log(comment);
 
     // fetch() - REST API 요청을 JS로 보내준다!
-    const URL = `/api/articles/${comment.articleId}/new-comment`;
+    const URL = `/join`;
     fetch(URL, {
         method : "post",// post요청
         body : JSON.stringify(comment),
