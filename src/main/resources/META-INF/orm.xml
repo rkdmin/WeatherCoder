@@ -18,4 +18,18 @@
             ]]>
         </query>
     </named-native-query>
+    <named-native-query
+            name="Member.findByUserId"
+            result-class="com.example.firstproject.entity.Member">
+        <query>
+            <![CDATA[
+                SELECT
+                    *
+                FROM
+                    member
+                WHERE
+                    user_id = :userId
+            ]]>
+        </query>
+    </named-native-query>
 </entity-mappings>

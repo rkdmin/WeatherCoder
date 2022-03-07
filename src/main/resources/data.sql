@@ -20,3 +20,8 @@ INSERT INTO comment(id, article_id, nickname, body) VALUES (4, 5, 'Park', '비�
 ---- 6번 게시글의 댓글들
 INSERT INTO comment(id, article_id, nickname, body) VALUES (5, 6, 'Park', '어쩔티비');
 INSERT INTO comment(id, article_id, nickname, body) VALUES (6, 6, 'Lee', 'ㄴ 이사람 왜저래');
+
+-- member 더미 데이터
+INSERT INTO member(id, user_id, email, password, nickname, level, status, cert, reg_date, drop_date)
+VALUES (0, 'admin', 'admin@naver.com', '1234', '이강민', 1, 'Y', 1, '1', '1');
+

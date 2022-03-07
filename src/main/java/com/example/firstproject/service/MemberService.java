@@ -1,8 +1,69 @@
 package com.example.firstproject.service;
+import com.example.firstproject.dto.CommentVO;
+import com.example.firstproject.dto.MemberDto;
+import com.example.firstproject.entity.Article;
+import com.example.firstproject.entity.Comment;
+import com.example.firstproject.entity.Member;
+import com.example.firstproject.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class MemberService {
+public class MemberService{
+
+    @Autowired
+    private MemberRepository memberRepository;
+
+    // 댓글 생성
+    @Transactional
+    public MemberDto create(MemberDto memberDto) {
+
+        // 회원가입 및 예외 처리
+        // 1. 중복된 아이디
+        Member foundEntity = memberRepository.findByUserId(memberDto.getUserId());// id 검색
+        if(foundEntity != null){
+            throw new IllegalArgumentException("회원가입 실패! : 중복된 아이디입니다.");
+        }
+        // 2. 필요없는데 id가 존재
+        if(memberDto.getId() != null){
+            throw new IllegalArgumentException("회원가입 실패! : 일련번호가 기재되어있습니다.");
+        }
+
+        // 엔티티로 변경
+        Member memberEntity = memberDto.toEntity();
+
+        // 댓글 엔티티를 DB에 저장
+        Member created = memberRepository.save(memberEntity);
+
+        // 결과
+        return created.toDto();// dto로 반환
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
