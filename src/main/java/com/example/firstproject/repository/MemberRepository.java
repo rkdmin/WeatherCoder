@@ -1,5 +1,6 @@
 package com.example.firstproject.repository;
 
+import com.example.firstproject.dto.MemberDto;
 import com.example.firstproject.entity.Comment;
 import com.example.firstproject.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     // 아이디 중복 조회
     Member findByUserId(String userId);
-
+    // 이메일 중복 조회
+    Member findByEmail(String email);
+    // 닉네임 중복 조회
+    Member findByNickname(String nickname);
+    // 로그인 프로세스
+    Member loginProcess(String userId, String secPassword);
 }

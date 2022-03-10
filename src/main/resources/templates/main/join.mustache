@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function comment(){
+        const date = new Date();
+
+      const able = {
+        userId : document.querySelector(".id").value,
+        password:document.querySelector(".pw").value,
+        email:document.querySelector(".em").value,
+        nickname:document.querySelector(".nm").value,
+        regDate : date.toLocaleDateString(),
+        level:1,cert:0,status:"Y"
+      }
+      console.log(able);
+      const URL = `/join`;
+    fetch(URL, {
+        method : "post",
+        headers : {
+            "Content-Type" : "application/json"
+        },
+        body : JSON.stringify(able)
+    }).then(response => {
+        const msg = (response.ok) ? "Completed for Sign Up :) " : "Feile to Sign Up :(";
+        alert(msg);
+        window.location.reload();
+    });
+
+    }
+    </script>
+    <h1>회원가입</h1>
+      <input type="tetx" class ="id" placeholder="ID" name="ID">
+      <br>
+      <input  type="tetx" class ="pw" placeholder="PASSWORD"name="PASSWORD">
+      <br>
+      <input  type="tetx" class ="em" placeholder="E-MAIL"name="E-MAIL">
+      <br>
+      <input  type="tetx" class ="nm" placeholder="NICKNAME"name="NICKNAME">
+      <br>
+      <input type="button" value="가입" onclick="comment()">
+      
+  </body>
+</html>
+ 

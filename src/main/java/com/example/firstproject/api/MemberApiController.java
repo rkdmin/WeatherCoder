@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
@@ -21,15 +22,28 @@ public class MemberApiController {
     @Autowired
     MemberService memberService;
 
-    // POST
     @PostMapping("/join")
-    public ResponseEntity<MemberDto> create(@RequestBody MemberDto dto){
-
-
+    public ResponseEntity<MemberDto> create(@RequestBody MemberDto dto) throws NoSuchAlgorithmException {
         // 서비스에게 위임
         MemberDto memberDto = memberService.create(dto);
 
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return (memberDto != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(memberDto):
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    // 로그인
+    @PostMapping("/login")
+    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto) throws NoSuchAlgorithmException{
+        String userId = dto.getUserId();// 아이디
+        String password = dto.getPassword();// 패스워드
+
+        // 서비스에게 위임
+        MemberDto memberDto = memberService.login(userId, password);
+
+        return (memberDto != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(memberDto):
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
 //    // GET

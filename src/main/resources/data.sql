@@ -23,5 +23,5 @@ INSERT INTO comment(id, article_id, nickname, body) VALUES (6, 6, 'Lee', 'ㄴ �
 
 -- member 더미 데이터
 INSERT INTO member(id, user_id, email, password, nickname, level, status, cert, reg_date, drop_date)
-VALUES (0, 'admin', 'admin@naver.com', '1234', '이강민', 1, 'Y', 1, '1', '1');
+VALUES (0, 'admin', 'admin@naver.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', '이강민', 1, 'Y', 1, '1', '1');
 
