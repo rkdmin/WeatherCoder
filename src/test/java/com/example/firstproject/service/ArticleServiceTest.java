@@ -66,7 +66,7 @@ class ArticleServiceTest {
         String title = "테스트";
         String content = "테스트";
         ArticleVO dto = new ArticleVO(null, title, content);
-        Article expected = new Article(7L, title, content);
+        Article expected = new Article(2L, title, content);
         // 실제
         Article article = articleService.create(dto);
         // 비교

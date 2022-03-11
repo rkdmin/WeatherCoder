@@ -46,6 +46,18 @@ public class MemberApiController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
+    // 아이디 찾기
+    @PostMapping("/login/{email}")
+    public ResponseEntity<MemberDto> findUserId(@PathVariable String email) throws NoSuchAlgorithmException{
+
+        // 서비스에게 위임
+        MemberDto memberDto = memberService.findUserId(email);
+
+        return (memberDto != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(memberDto):
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
 //    // GET
 //    // 전체조회
 //    @GetMapping("api/articles")

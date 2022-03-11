@@ -88,21 +88,19 @@ public class MemberService{
 
         return memberDto;
     }
+
+    // 아이디 찾기
+    public MemberDto findUserId(String email) throws NoSuchAlgorithmException{
+        //  로그인 및 예외 처리
+        // 1. 존재하지 않는 이메일
+        Member member = memberRepository.findByEmail(email);
+        if(member == null){
+            throw new IllegalArgumentException("아이디 찾기 실패! : 존재하지 않는 이메일입니다.");
+        }
+
+        // dto -> entity
+        MemberDto memberDto = member.toDto();
+
+        return memberDto;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

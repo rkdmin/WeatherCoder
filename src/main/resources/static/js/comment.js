@@ -24,7 +24,8 @@ function clickCreateCommentBtn(){
         // http 응답 코드에 따른 메세지 출력
         const msg = (response.ok) ? "댓글이 등록되었습니다." : "댓글 등록 실패.";
         alert(msg);
-        // 페이지 새로고침
+        // 페이지 새로고침 
+        window.location.reload();
     });
 }
 

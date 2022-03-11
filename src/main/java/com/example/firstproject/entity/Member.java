@@ -16,6 +16,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @ToString
 public class Member {
+
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
