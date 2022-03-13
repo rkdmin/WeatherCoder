@@ -38,7 +38,6 @@ class ArticleServiceTest {
 
     @Test
     void show_성공____존재하는_id_입력() {
-
         // 예상
         Long id = 1L;
         Article expected = new Article(id, "가가가가", "1111");
@@ -66,7 +65,7 @@ class ArticleServiceTest {
         String title = "테스트";
         String content = "테스트";
         ArticleVO dto = new ArticleVO(null, title, content);
-        Article expected = new Article(2L, title, content);
+        Article expected = new Article(3L, title, content);
         // 실제
         Article article = articleService.create(dto);
         // 비교

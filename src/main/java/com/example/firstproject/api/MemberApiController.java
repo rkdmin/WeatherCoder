@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,15 @@ import java.util.Map;
 public class MemberApiController {
     @Autowired
     MemberService memberService;
+    @Autowired
+    ArticleService articleService;
+
+    @PostMapping("/hello")
+    public Article Hello(){
+        ArticleVO articleDto = new ArticleVO(null, "123", "123");
+        Article article = articleService.create(articleDto);
+        return article;
+    }
 
     @PostMapping("/join")
     public ResponseEntity<MemberDto> create(@RequestBody MemberDto dto) throws NoSuchAlgorithmException {
