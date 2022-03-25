@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -46,7 +48,7 @@ public class MemberService{
         if(checkNickname != null){
             throw new IllegalArgumentException("회원가입 실패! : 중복된 닉네임입니다.");
         }
-        // 4. 필요없는데 id가 존재
+        // 4. 필요없는데 일련번호가 존재
         if(memberDto.getId() != null){
             throw new IllegalArgumentException("회원가입 실패! : 일련번호가 기재되어있습니다.");
         }
@@ -67,7 +69,7 @@ public class MemberService{
     }
 
     // 로그인
-    public MemberDto login(String userId, String password) throws NoSuchAlgorithmException{
+    public MemberDto login(String userId, String password, HttpServletRequest request) throws NoSuchAlgorithmException{
         // 비밀번호 암호화
         SHA256 sha256 = new SHA256();
         String secPassword = sha256.encrypt(password);// 불러온 비밀번호 암호화
@@ -79,12 +81,17 @@ public class MemberService{
             throw new IllegalArgumentException("로그인 실패! : 존재하지 않는 회원정보입니다.");
         }
         // 2. 입력된 아이디나, 패스워드가 존재하지 않는경우
-        if(userId == null || password == null){
+        if(userId == null || password == null || userId.equals("") || password.equals("")){
             throw new IllegalArgumentException("로그인 실패! : 아이디나 비밀번호를 입력해주세요.");
         }
 
         // dto -> entity
         MemberDto memberDto = member.toDto();
+
+        // 로그인 세션 처리
+        HttpSession session = request.getSession();
+        session.setAttribute("memberDto", memberDto);
+        session.setMaxInactiveInterval(60);// 60초간 별다른 요청이 없으면 세션정보 삭제(로그아웃)
 
         return memberDto;
     }

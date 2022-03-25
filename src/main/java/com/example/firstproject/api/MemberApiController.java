@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -44,12 +45,14 @@ public class MemberApiController {
 
     // 로그인
     @PostMapping("/login")
-    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto) throws NoSuchAlgorithmException{
+    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto,
+                                           HttpServletRequest request) throws NoSuchAlgorithmException{
+
         String userId = dto.getUserId();// 아이디
         String password = dto.getPassword();// 패스워드
 
         // 서비스에게 위임
-        MemberDto memberDto = memberService.login(userId, password);
+        MemberDto memberDto = memberService.login(userId, password, request);
 
         return (memberDto != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(memberDto):
