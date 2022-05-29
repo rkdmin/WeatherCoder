@@ -1,20 +1,16 @@
-import {useState,useEffect} from "react";
+import {ChangeToUserData} from "./Userdata";
+import { Link } from "react-router-dom";
 function Information (){
-    const [infoma,setInfoma] = useState([]);
-    useEffect(()=>{
-        fetch('/')
-        .then((response)=>response.json())
-        .then(json=>{setInfoma(json.data.infoma);})
-      },[])
-    return (<div> 
-         <h1>User Information</h1>
-     {infoma.map((user_data)=>{
-       return(<div>
-    <h3>Id : {user_data.userId}</h3>
-    <h3>Email : {user_data.email}</h3>
-    <h3>NickName : {user_data.nickname}</h3>
-    <h3>RegDate : {user_data.regDate}</h3>
-    </div>);})}
-    </div>);
+    return (
+<ChangeToUserData.Consumer>
+    {(H)=><div> 
+    <h1>User Information</h1>
+    <h3>Id : {H.Id}</h3>
+    <h3>Email : {H.Email}</h3>
+    <h3>NickName : {H.Nickname}</h3>
+    <Link to = '/'> 홈페이지 </Link>
+    </div>}
+</ChangeToUserData.Consumer>
+    );
 }
 export default Information;

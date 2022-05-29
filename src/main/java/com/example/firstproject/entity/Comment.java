@@ -1,6 +1,6 @@
 package com.example.firstproject.entity;
 
-import com.example.firstproject.dto.CommentVO;
+import com.example.firstproject.dto.CommentDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,11 +27,11 @@ public class Comment {
     private String body;
 
     // entity -> dto
-    public CommentVO toDto() {
-        return new CommentVO(id, article.getId(), nickname, body);
+    public CommentDto toDto() {
+        return new CommentDto(id, article.getId(), nickname, body);
     }
 
-    public void patch(CommentVO commentDto) {
+    public void patch(CommentDto commentDto) {
         if(commentDto.getNickname() != null){ // 데이터에 닉네임 값이 있으면 원래 데이터를 수정
             this.nickname = commentDto.getNickname();
         }

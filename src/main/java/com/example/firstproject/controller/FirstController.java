@@ -1,22 +1,13 @@
 package com.example.firstproject.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller// 브라우저로부터 요청을 받음
+@RestController// Controller는 페이지(view)를 반환하지만 이건 JSON 즉, 데이터를 반환
 public class FirstController {
 
-    @GetMapping("/hi")// 접속할 url
-    public String Hello(Model model) {
-        model.addAttribute("username", "22rkdmin");
-        return "greetings";// templates/greetings.mustache -> 브라우저로 전송!
+    @GetMapping("/api/hello")
+    public String hello(){
+        return "hello world";
     }
-
-    @GetMapping("/bye")
-    public String Bye(Model model){
-        model.addAttribute("nickname", "홍길동");
-        return "goodbye";
-    }
-
 }

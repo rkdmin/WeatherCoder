@@ -7,7 +7,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-public class ArticleVO {
+public class ArticleDto {
     private Long id;
     private String title;
     private String content;

@@ -38,17 +38,15 @@ public class MemberDto {
     @Size(min = 2, max = 8, message = "닉네임을 2~8자 사이로 입력해주세요.")
     private String nickname;// 닉네임
 
-    private int level;// 레벨
-
     private String status;// 회원상태 Y:정상 N:탈퇴 D:접근거부
 
-    private int cert;// 인증여부 1:인증 0:미인증
+    private int category;// 인증여부 1:인증 0:미인증
 
     private String regDate;// 가입일
 
     private String dropDate;// 탈퇴일
 
     public Member toEntity() {
-        return new Member(id, userId, email, password, nickname, level, status, cert, regDate, dropDate);
+        return new Member(id, userId, email, password, nickname, category, status, regDate, dropDate);
     }
 }

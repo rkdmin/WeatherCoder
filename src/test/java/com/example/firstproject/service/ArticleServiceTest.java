@@ -1,6 +1,6 @@
 package com.example.firstproject.service;
 
-import com.example.firstproject.dto.ArticleVO;
+import com.example.firstproject.dto.ArticleDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
 import org.junit.jupiter.api.Test;
@@ -64,7 +64,7 @@ class ArticleServiceTest {
         // 예상
         String title = "테스트";
         String content = "테스트";
-        ArticleVO dto = new ArticleVO(null, title, content);
+        ArticleDto dto = new ArticleDto(null, title, content);
         Article expected = new Article(3L, title, content);
         // 실제
         Article article = articleService.create(dto);
@@ -79,7 +79,7 @@ class ArticleServiceTest {
         Long id = 4L;
         String title = "테스트";
         String content = "테스트";
-        ArticleVO dto = new ArticleVO(id, title, content);
+        ArticleDto dto = new ArticleDto(id, title, content);
         Article expected = null;// 아이디가 존재하므로 null이 나와야함
         // 실제
         Article article = articleService.create(dto);
@@ -94,7 +94,7 @@ class ArticleServiceTest {
         Long id = 1L;
         String title = "테스트";
         String content = "테스트";
-        ArticleVO dto = new ArticleVO(id, title, content);
+        ArticleDto dto = new ArticleDto(id, title, content);
         Article expected = new Article(id, title, content);
         // 실제
         Article article = articleService.edit(dto, id);
@@ -109,7 +109,7 @@ class ArticleServiceTest {
         Long id = 1L;
         String title = null;
         String content = "테스트";
-        ArticleVO dto = new ArticleVO(id, title, content);
+        ArticleDto dto = new ArticleDto(id, title, content);
         title = articleRepository.findById(id).orElse(null).getTitle();// 원래있던 title
         Article expected = new Article(id, title, content);// 아이디가 존재하므로 null이 나와야함
         // 실제
@@ -125,7 +125,7 @@ class ArticleServiceTest {
         Long id = 4L;
         String title = "테스트";
         String content = "테스트";
-        ArticleVO dto = new ArticleVO(id, title, content);
+        ArticleDto dto = new ArticleDto(id, title, content);
         Article expected = null;// 존재하지 않는 아이디가 존재하므로 null이 나와야함
         // 실제
         Article article = articleService.edit(dto, id);
@@ -140,7 +140,7 @@ class ArticleServiceTest {
         Long id = 1L;
         String title = null;
         String content = null;
-        ArticleVO dto = new ArticleVO(id, title, content);
+        ArticleDto dto = new ArticleDto(id, title, content);
         Article expected = null;// 아이디만 존재하므로 null이 나와야함
         // 실제
         Article article = articleService.edit(dto, id);

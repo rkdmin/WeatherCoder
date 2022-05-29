@@ -1,21 +1,59 @@
 package com.example.firstproject.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.example.firstproject.dto.MemberDto;
+import com.example.firstproject.service.ArticleService;
+import com.example.firstproject.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller// 브라우저로부터 요청을 받음
+import javax.servlet.http.HttpServletRequest;
+import java.security.NoSuchAlgorithmException;
+
+@RestController
 public class MemberController {
-    // 회원가입 페이지
-    @GetMapping("/joi")
-    public String join() {
-        return "main/join";
+    @Autowired
+    MemberService memberService;
+    @Autowired
+    ArticleService articleService;
+
+    @PostMapping("/join")
+    public ResponseEntity<MemberDto> create(@RequestBody MemberDto dto) throws NoSuchAlgorithmException {
+        // 서비스에게 위임
+        MemberDto memberDto = memberService.create(dto);
+
+        return (memberDto != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(memberDto):
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    // 로그인 페이지
-    @GetMapping("/login")
-    public String login() {
-        return "main/login";
+    // 로그인
+    @PostMapping("/login")
+    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto,
+                                           HttpServletRequest request) throws NoSuchAlgorithmException{
+
+        String userId = dto.getUserId();// 아이디
+        String password = dto.getPassword();// 패스워드
+
+        // 서비스에게 위임
+        MemberDto memberDto = memberService.login(userId, password, request);
+
+        return (memberDto != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(memberDto):
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    // 아이디 찾기
+    @PostMapping("/login/{email}")
+    public ResponseEntity<MemberDto> findUserId(@PathVariable String email) throws NoSuchAlgorithmException {
+
+        // 서비스에게 위임
+        MemberDto memberDto = memberService.findUserId(email);
+
+        return (memberDto != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(memberDto) :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
 }

@@ -1,20 +1,15 @@
 package com.example.firstproject.service;
 
-import com.example.firstproject.annotation.RunningTime;
-import com.example.firstproject.dto.CommentVO;
+import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.entity.Comment;
 import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.repository.CommentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +21,7 @@ public class CommentService {
     @Autowired private ArticleRepository articleRepository;// article 데이터도 사용하게 됨
 
     // 댓글 목록조회
-    public List<CommentVO>showCommentList(Long articleId){
+    public List<CommentDto>showCommentList(Long articleId){
         // 조회
         List<Comment> commentEntityList = commentRepository.findByArticleId(articleId);
 
@@ -47,7 +42,7 @@ public class CommentService {
 
     // 댓글 생성
     @Transactional
-    public CommentVO create(Long articleId, CommentVO commentDto) {
+    public CommentDto create(Long articleId, CommentDto commentDto) {
 
         // 게시글 조회 및 예외 처리
         Article articleEntity = articleRepository.findById(articleId)// 1. 아이디가 없다면
@@ -71,7 +66,7 @@ public class CommentService {
 
     // 댓글 수정
     @Transactional
-    public CommentVO edit(Long id, CommentVO commentDto) {
+    public CommentDto edit(Long id, CommentDto commentDto) {
         // 예외
         Comment commentEntity = commentRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("댓글 수정 실패! 댓글이 없습니다."));// 1.요청한 id로 찾아본 데이터가 db에 없는 경우
@@ -91,7 +86,7 @@ public class CommentService {
 
     // 댓글삭제
     @Transactional
-    public CommentVO delete(Long id) {
+    public CommentDto delete(Long id) {
         // 조회 및 예외처리
         Comment target = commentRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("댓글 삭제 실패! 댓글이 없습니다."));// db에 요청한 데이터가 없음

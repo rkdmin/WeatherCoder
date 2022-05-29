@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class CommentVO {
+public class CommentDto {
     private Long id;
     private Long articleId;
     private String nickname;
