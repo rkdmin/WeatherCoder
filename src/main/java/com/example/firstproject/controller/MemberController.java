@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 
 @RestController
@@ -44,6 +45,15 @@ public class MemberController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
+    // 로그아웃
+    @DeleteMapping("/logout")
+    public void logout(HttpServletRequest request){
+        // 로그아웃
+        HttpSession session = request.getSession(false);
+        if (session != null){
+            session.invalidate();
+        }
+    }
     // 아이디 찾기
     @PostMapping("/login/{email}")
     public ResponseEntity<MemberDto> findUserId(@PathVariable String email) throws NoSuchAlgorithmException {

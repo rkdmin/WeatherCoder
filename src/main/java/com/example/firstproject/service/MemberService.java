@@ -80,7 +80,7 @@ public class MemberService{
 
         // 로그인 세션 처리
         HttpSession session = request.getSession();
-        session.setAttribute("memberDto", memberDto);
+        session.setAttribute("userId", memberDto.getUserId());
         session.setMaxInactiveInterval(60);// 60초간 별다른 요청이 없으면 세션정보 삭제(로그아웃)
 
         return memberDto;
