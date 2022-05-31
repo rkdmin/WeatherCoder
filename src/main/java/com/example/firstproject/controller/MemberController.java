@@ -1,6 +1,6 @@
 package com.example.firstproject.controller;
-
 import com.example.firstproject.dto.MemberDto;
+import com.example.firstproject.jwt.JwtTokenProvider;
 import com.example.firstproject.service.ArticleService;
 import com.example.firstproject.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,29 +31,26 @@ public class MemberController {
 
     // 로그인
     @PostMapping("/login")
-    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto,
-                                           HttpServletRequest request) throws NoSuchAlgorithmException{
+    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto) throws NoSuchAlgorithmException{
 
         String userId = dto.getUserId();// 아이디
         String password = dto.getPassword();// 패스워드
 
         // 서비스에게 위임
-        MemberDto memberDto = memberService.login(userId, password, request);
+        MemberDto memberDto = memberService.login(userId, password);
+
+        // 토큰생성
+        JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
+        String token = jwtTokenProvider.makeJwtToken(dto.getUserId(), dto.getEmail());
+//        return (memberDto != null) ?
+//                ResponseEntity.status(HttpStatus.OK).header("token", token).body(memberDto):
+//                ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); 토큰사용=> 유지보수때 수정예정
 
         return (memberDto != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(memberDto):
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    // 로그아웃
-    @DeleteMapping("/logout")
-    public void logout(HttpServletRequest request){
-        // 로그아웃
-        HttpSession session = request.getSession(false);
-        if (session != null){
-            session.invalidate();
-        }
-    }
     // 아이디 찾기
     @PostMapping("/login/{email}")
     public ResponseEntity<MemberDto> findUserId(@PathVariable String email) throws NoSuchAlgorithmException {
@@ -65,5 +62,4 @@ public class MemberController {
                 ResponseEntity.status(HttpStatus.OK).body(memberDto) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
 }

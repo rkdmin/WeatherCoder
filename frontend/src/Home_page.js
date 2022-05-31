@@ -15,7 +15,7 @@ function Home_page (){
       method : "post", 
       body : JSON.stringify(data),
       headers : {"Content-Type" : "application/json"}
-      }).then((response)=> 
+      }).then((response)=>
      response.json()
        ).then(json=>{
          if(json.status==="Y"){
