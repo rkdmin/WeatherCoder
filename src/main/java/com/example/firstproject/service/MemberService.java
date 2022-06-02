@@ -60,7 +60,7 @@ public class MemberService{
     }
 
     // 로그인
-    public MemberDto login(String userId, String password, HttpServletRequest request) throws NoSuchAlgorithmException{
+    public MemberDto login(String userId, String password) throws NoSuchAlgorithmException{
         // 비밀번호 암호화
         SHA256 sha256 = new SHA256();
         String secPassword = sha256.encrypt(password);// 불러온 비밀번호 암호화
@@ -78,12 +78,6 @@ public class MemberService{
 
         // dto -> entity
         MemberDto memberDto = member.toDto();
-
-        // 로그인 세션 처리
-        HttpSession session = request.getSession();
-        session.setAttribute("memberDto", memberDto);
-        session.setAttribute("userId", memberDto.getUserId());
-        session.setMaxInactiveInterval(60);
 
         return memberDto;
     }
