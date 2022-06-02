@@ -54,12 +54,13 @@ public class MemberService{
         // 댓글 엔티티를 DB에 저장
         Member created = memberRepository.save(memberEntity);
 
+
         // 결과
         return created.toDto();// dto로 반환
     }
 
     // 로그인
-    public MemberDto login(String userId, String password) throws NoSuchAlgorithmException{
+    public MemberDto login(String userId, String password, HttpServletRequest request) throws NoSuchAlgorithmException{
         // 비밀번호 암호화
         SHA256 sha256 = new SHA256();
         String secPassword = sha256.encrypt(password);// 불러온 비밀번호 암호화
@@ -77,6 +78,12 @@ public class MemberService{
 
         // dto -> entity
         MemberDto memberDto = member.toDto();
+
+        // 로그인 세션 처리
+        HttpSession session = request.getSession();
+        session.setAttribute("memberDto", memberDto);
+        session.setAttribute("userId", memberDto.getUserId());
+        session.setMaxInactiveInterval(60);
 
         return memberDto;
     }

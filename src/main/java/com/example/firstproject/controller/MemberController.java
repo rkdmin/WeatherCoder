@@ -31,13 +31,13 @@ public class MemberController {
 
     // 로그인
     @PostMapping("/login")
-    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto) throws NoSuchAlgorithmException{
+    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto, HttpServletRequest request) throws NoSuchAlgorithmException{
 
         String userId = dto.getUserId();// 아이디
         String password = dto.getPassword();// 패스워드
 
         // 서비스에게 위임
-        MemberDto memberDto = memberService.login(userId, password);
+        MemberDto memberDto = memberService.login(userId, password, request);
 
         // 토큰생성
         JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
