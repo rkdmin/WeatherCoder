@@ -42,8 +42,6 @@ public class ArticleService {
     // 수정
     public Article edit(@RequestBody ArticleDto dto,
                         @PathVariable Long id){
-
-        dto.setId(id);// 수정할 게시물의 id 설정
         // 1. 수정용 엔티티 생성
         Article articleEntity = dto.toEntity();
         log.info("id:{}, article: {}", id, articleEntity.toString());
