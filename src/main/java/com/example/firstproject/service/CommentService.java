@@ -67,6 +67,7 @@ public class CommentService {
     // 댓글 수정
     @Transactional
     public CommentDto edit(Long id, CommentDto commentDto) {
+        commentDto.setId(id);// id 설정
         // 예외
         Comment commentEntity = commentRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("댓글 수정 실패! 댓글이 없습니다."));// 1.요청한 id로 찾아본 데이터가 db에 없는 경우
