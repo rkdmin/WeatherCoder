@@ -5,6 +5,7 @@ import com.example.firstproject.entity.Article;
 import com.example.firstproject.entity.Comment;
 import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.repository.CommentRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,11 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class CommentService {
 
-    @Autowired private CommentRepository commentRepository;
-    @Autowired private ArticleRepository articleRepository;// article 데이터도 사용하게 됨
+    private final CommentRepository commentRepository;
+    private final ArticleRepository articleRepository;// article 데이터도 사용하게 됨
 
     // 댓글 목록조회
     public List<CommentDto>showCommentList(Long articleId){

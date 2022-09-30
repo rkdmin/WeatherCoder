@@ -1,19 +1,20 @@
 package com.example.firstproject.controller;
 
-import com.example.firstproject.annotation.RunningTime;
 import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.service.CommentService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
+@Transactional
 public class CommentController {
-    @Autowired
-    CommentService commentService;
+    private final CommentService commentService;
 
     // 댓글 목록 조회
     @GetMapping("/articles/{articleId}/comments")
@@ -44,7 +45,6 @@ public class CommentController {
     }
 
     // 댓글 삭제
-    @RunningTime
     @DeleteMapping("/articles/comment/{id}/delete")
     public ResponseEntity<CommentDto> deleteComment(@PathVariable Long id){
 

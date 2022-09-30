@@ -3,6 +3,7 @@ package com.example.firstproject.service;
 import com.example.firstproject.dto.ArticleDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,10 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service// 서비스 선언!(서비스 객체를 스프링부트에 생성)
+@RequiredArgsConstructor
 public class ArticleService {
-    @Autowired
-    private ArticleRepository articleRepository;
+
+    private final ArticleRepository articleRepository;
 
     // 전체검색
     public List<Article> showList() {

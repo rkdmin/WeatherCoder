@@ -1,8 +1,8 @@
 package com.example.firstproject.controller;
 import com.example.firstproject.dto.MemberDto;
-import com.example.firstproject.jwt.JwtTokenProvider;
 import com.example.firstproject.service.ArticleService;
 import com.example.firstproject.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 
 @RestController
+@RequiredArgsConstructor
 public class MemberController {
-    @Autowired
-    MemberService memberService;
-    @Autowired
-    ArticleService articleService;
+
+    private final MemberService memberService;
+    private final ArticleService articleService;
 
     @PostMapping("/join")
     public ResponseEntity<MemberDto> create(@RequestBody MemberDto dto) throws NoSuchAlgorithmException {
@@ -39,12 +39,12 @@ public class MemberController {
         // 서비스에게 위임
         MemberDto memberDto = memberService.login(userId, password);
 
-        // 토큰생성
-        JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
-        String token = jwtTokenProvider.makeJwtToken(dto.getUserId(), dto.getEmail());
-//        return (memberDto != null) ?
-//                ResponseEntity.status(HttpStatus.OK).header("token", token).body(memberDto):
-//                ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); 토큰사용=> 유지보수때 수정예정
+//        // 토큰생성
+//        JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
+//        String token = jwtTokenProvider.makeJwtToken(dto.getUserId(), dto.getEmail());
+////        return (memberDto != null) ?
+////                ResponseEntity.status(HttpStatus.OK).header("token", token).body(memberDto):
+////                ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); 토큰사용=> 유지보수때 수정예정
 
         return (memberDto != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(memberDto):

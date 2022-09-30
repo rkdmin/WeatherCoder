@@ -3,6 +3,7 @@ import com.example.firstproject.dto.MemberDto;
 import com.example.firstproject.entity.Member;
 import com.example.firstproject.repository.MemberRepository;
 import com.example.firstproject.security.SHA256;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,10 @@ import java.security.NoSuchAlgorithmException;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class MemberService{
 
-    @Autowired
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     // 회원가입
     @Transactional

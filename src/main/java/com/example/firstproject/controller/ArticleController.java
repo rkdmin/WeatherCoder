@@ -3,25 +3,27 @@ package com.example.firstproject.controller;
 import com.example.firstproject.dto.ArticleDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.service.ArticleService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @Slf4j
 @RestController// RestAPI 용 컨트롤러! 데이터(JSON)를 반환
+@RequiredArgsConstructor
+@Transactional
 public class ArticleController {
 
-    @Autowired
-    private ArticleService articleService;
+    private final ArticleService articleService;
 
     // GET
     // 전체조회
     @GetMapping("/articles")
     public List<Article> showList(){
-
         // 모든 Article 데이터를 조회
         return articleService.showList();
     }
