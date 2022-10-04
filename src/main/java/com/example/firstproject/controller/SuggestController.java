@@ -20,7 +20,7 @@ public class SuggestController {
     public Suggest1.Response suggest1(
             @Valid @RequestBody Suggest1.Request request
             ){
-        List<Long> list;
+     22   List<Long> list;
         list = clothesService.suggest1(request.toClothesDtoList());
 
         // 비회원이면 추천을 저장하지 않음
