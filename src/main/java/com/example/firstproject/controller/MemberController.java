@@ -20,46 +20,41 @@ public class MemberController {
     private final ArticleService articleService;
 
     @PostMapping("/join")
-    public ResponseEntity<MemberDto> create(@RequestBody MemberDto dto) throws NoSuchAlgorithmException {
-        // 서비스에게 위임
-        MemberDto memberDto = memberService.create(dto);
-
-        return (memberDto != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(memberDto):
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    public void create(@RequestBody MemberDto.Request request) throws NoSuchAlgorithmException {
+        memberService.create(request);
     }
 
-    // 로그인
-    @PostMapping("/login")
-    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto) throws NoSuchAlgorithmException{
-
-        String userId = dto.getUserId();// 아이디
-        String password = dto.getPassword();// 패스워드
-
-        // 서비스에게 위임
-        MemberDto memberDto = memberService.login(userId, password);
-
-//        // 토큰생성
-//        JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
-//        String token = jwtTokenProvider.makeJwtToken(dto.getUserId(), dto.getEmail());
-////        return (memberDto != null) ?
-////                ResponseEntity.status(HttpStatus.OK).header("token", token).body(memberDto):
-////                ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); 토큰사용=> 유지보수때 수정예정
-
-        return (memberDto != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(memberDto):
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
-
-    // 아이디 찾기
-    @PostMapping("/login/{email}")
-    public ResponseEntity<MemberDto> findUserId(@PathVariable String email) throws NoSuchAlgorithmException {
-
-        // 서비스에게 위임
-        MemberDto memberDto = memberService.findUserId(email);
-
-        return (memberDto != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(memberDto) :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
+//    // 로그인
+//    @PostMapping("/login")
+//    public ResponseEntity<MemberDto> login(@RequestBody MemberDto dto) throws NoSuchAlgorithmException{
+//
+//        String userId = dto.getUserId();// 아이디
+//        String password = dto.getPassword();// 패스워드
+//
+//        // 서비스에게 위임
+//        MemberDto memberDto = memberService.login(userId, password);
+//
+////        // 토큰생성
+////        JwtTokenProvider jwtTokenProvider = new JwtTokenProvider();
+////        String token = jwtTokenProvider.makeJwtToken(dto.getUserId(), dto.getEmail());
+//////        return (memberDto != null) ?
+//////                ResponseEntity.status(HttpStatus.OK).header("token", token).body(memberDto):
+//////                ResponseEntity.status(HttpStatus.BAD_REQUEST).build(); 토큰사용=> 유지보수때 수정예정
+//
+//        return (memberDto != null) ?
+//                ResponseEntity.status(HttpStatus.OK).body(memberDto):
+//                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//    }
+//
+//    // 아이디 찾기
+//    @PostMapping("/login/{email}")
+//    public ResponseEntity<MemberDto> findUserId(@PathVariable String email) throws NoSuchAlgorithmException {
+//
+//        // 서비스에게 위임
+//        MemberDto memberDto = memberService.findUserId(email);
+//
+//        return (memberDto != null) ?
+//                ResponseEntity.status(HttpStatus.OK).body(memberDto) :
+//                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//    }
 }

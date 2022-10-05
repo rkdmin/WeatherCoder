@@ -21,6 +21,13 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
     }
 
+    @ExceptionHandler(MemberException.class)
+    public ErrorResponse handelMemberException(MemberException e){
+        log.error("{} is occurred", e.getErrorMassage());
+
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
+    }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ErrorResponse handelDataIntegrityViolationException(SuggestException e){
         log.error("DataIntegrityViolation is occurred");
@@ -30,7 +37,7 @@ public class GlobalExceptionHandler {
 
 //     다 거르고 마지막 예외
     @ExceptionHandler(Exception.class)
-    public ErrorResponse handelException(SuggestException e){
+    public ErrorResponse handelException(Exception e){
         log.error("{} is occurred", e);
 
         return new ErrorResponse(INTERNAL_SERVER_ERROR,

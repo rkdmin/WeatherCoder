@@ -1,0 +1,25 @@
+### create
+POST http://localhost:8080/join
+Content-Type: application/json
+
+{
+  "email": "22rkdmin@naver.com",
+  "password": "a12345",
+  "age": 1,
+  "height": 1,
+  "weight" : 1,
+  "style" : "댄디"
+}
+
+### delelte account
+DELETE http://localhost:8080/account
+Content-Type: application/json
+
+{
+  "userId" : 3,
+  "accountNumber" : "1000000007"
+}
+
+### get account
+GET http://localhost:8080/account/?user_id=1
+Accept: application/json
