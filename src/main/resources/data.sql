@@ -1,21 +1,21 @@
---
--- -- article 더미 데이터
--- INSERT INTO Article(id, title, content) VALUES (100, '당신의 인생 영화는 ?', '댓글 ㄱ');
--- INSERT INTO Article(id, title, content) VALUES (101, '당신의 소울 푸드는 ?', '댓글 ㄱ');
--- INSERT INTO Article(id, title, content) VALUES (102, '당신의 취미는 ?', '댓글 ㄱ');
---
--- -- comment 더미 데이터
--- ---- 100번 게시글의 댓글들
--- INSERT INTO comment(id, article_id, nickname, body) VALUES (100, 100, 'Park', '쇼생크탈출');
--- INSERT INTO comment(id, article_id, nickname, body) VALUES (101, 100, 'Lee', '시네마천국');
--- INSERT INTO comment(id, article_id, nickname, body) VALUES (102, 100, 'Kim', '명량');
---
--- ---- 101번 게시글의 댓글들
--- INSERT INTO comment(id, article_id, nickname, body) VALUES (103, 101, 'Park', '비빔밥');
---
--- ---- 102번 게시글의 댓글들
--- INSERT INTO comment(id, article_id, nickname, body) VALUES (104, 102, 'Park', '어쩔티비');
--- INSERT INTO comment(id, article_id, nickname, body) VALUES (105, 102, 'Lee', 'ㄴ 이사람 왜저래');
+
+-- article 더미 데이터
+INSERT INTO Article(id, title, content) VALUES (100, '당신의 인생 영화는 ?', '댓글 ㄱ');
+INSERT INTO Article(id, title, content) VALUES (101, '당신의 소울 푸드는 ?', '댓글 ㄱ');
+INSERT INTO Article(id, title, content) VALUES (102, '당신의 취미는 ?', '댓글 ㄱ');
+
+-- comment 더미 데이터
+---- 100번 게시글의 댓글들
+INSERT INTO comment(id, article_id, nickname, body) VALUES (100, 100, 'Park', '쇼생크탈출');
+INSERT INTO comment(id, article_id, nickname, body) VALUES (101, 100, 'Lee', '시네마천국');
+INSERT INTO comment(id, article_id, nickname, body) VALUES (102, 100, 'Kim', '명량');
+
+---- 101번 게시글의 댓글들
+INSERT INTO comment(id, article_id, nickname, body) VALUES (103, 101, 'Park', '비빔밥');
+
+---- 102번 게시글의 댓글들
+INSERT INTO comment(id, article_id, nickname, body) VALUES (104, 102, 'Park', '어쩔티비');
+INSERT INTO comment(id, article_id, nickname, body) VALUES (105, 102, 'Lee', 'ㄴ 이사람 왜저래');
 --
 -- -- member 더미 데이터
 -- INSERT INTO member(id, user_id, email, password, nickname, status, category,

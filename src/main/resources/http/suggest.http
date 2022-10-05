@@ -1,5 +1,5 @@
 ### suggest1
-GET http://localhost:8080/suggest1
+POST https://aa94276c3c7088.lhr.life/suggest1
 Content-Type: application/json
 
 {
