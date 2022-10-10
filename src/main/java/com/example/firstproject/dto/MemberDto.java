@@ -18,7 +18,7 @@ public class MemberDto {
         @Email(message = "이메일 형식에 맞지 않습니다.")
         private String email;// 이메일
         @NotBlank(message = "비밀번호를 입력하세요.")
-        @Pattern(regexp="[a-zA-Z1-9]{6,12}", message = "비밀번호는 영어와 숫자로 포함해서 6~12자리 이내로 입력해주세요.")
+        @Pattern(regexp="^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,16}$", message = "비밀번호는 영어, 숫자, 특스문자 포함해서 8~16자리 이내로 입력해주세요.")
         private String password;// 비밀번호
 
         private int age;// 1, 2, 3, 4, 5

@@ -16,7 +16,7 @@ import java.util.List;
 public class SuggestController {
     private final SuggestService clothesService;
 
-    @GetMapping("/suggest1")
+    @PostMapping("/suggest1")
     public Suggest1.Response suggest1(
             @Valid @RequestBody Suggest1.Request request
             ){
@@ -26,5 +26,16 @@ public class SuggestController {
         // 비회원이면 추천을 저장하지 않음
         return Suggest1.Response.toResponse(list);
     }
+
+//    @PostMapping("/suggest2")
+//    public Suggest2.Response suggest2(
+//            @Valid @RequestBody Suggest2.Request request
+//    ){
+//        List<Long> list;
+//        list = clothesService.suggest1(request.toClothesDtoList());
+//
+//        // 비회원이면 추천을 저장하지 않음
+//        return Suggest2.Response.toResponse(list);
+//    }
 
 }

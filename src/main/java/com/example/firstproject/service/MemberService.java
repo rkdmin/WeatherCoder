@@ -15,6 +15,8 @@ import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import static com.example.firstproject.type.ErrorCode.*;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -26,8 +28,7 @@ public class MemberService{
 
     // 회원가입
     public void create(MemberDto.Request request) throws NoSuchAlgorithmException {
-        boolean result = false;
-
+        // 유효성 검사
         validCreate(request);
 
         // 엔티티로 변경
@@ -37,22 +38,23 @@ public class MemberService{
         secPassword(member);
 
         memberRepository.save(member);
-        result = true;
 
         // 메일 전송
         sendEmail(request, member.getEmailKey());
     }
 
     // 이메일 처리
-    public void email(String emailKey) {
+    public void emailCert(String emailKey) {
         Optional<Member> optionalMember = memberRepository.findByEmailKey(emailKey);
+
         if(!optionalMember.isPresent()){
-            throw new MemberException(ErrorCode.INVALID_EMAIL_KEY);
+            throw new MemberException(INVALID_EMAIL_KEY);
         }
 
         Member member = optionalMember.get();
-        member.setStatus("Y");
-        memberRepository.save(member);
+        member.setStatus("Y");// 회원 활성 상태
+        member.setEmailKey("null");// 이메일 키를 비활성화
+        memberRepository.save(member);// 업데이트
     }
 
     private void sendEmail(MemberDto.Request request, String emailKey) {
@@ -77,7 +79,7 @@ public class MemberService{
         // 1. 중복된 이메일
         Optional<Member> checkEmail = memberRepository.findByEmail(request.getEmail());
         if(checkEmail.isPresent()){
-            throw new MemberException(ErrorCode.ALREADY_EXISTS_EMAIL);
+            throw new MemberException(ALREADY_EXISTS_EMAIL);
         }
     }
 
