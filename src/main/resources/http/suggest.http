@@ -8,6 +8,17 @@ Content-Type: application/json
   "gender" : "남성"
 }
 
+### suggest2
+POST http://localhost:8080/suggest2
+Content-Type: application/json
+
+{
+  "lowTemp" : 1,
+  "highTemp" : 1,
+  "email" : "22rkdmin@naver.com"
+}
+
+
 ### delelte account
 DELETE http://localhost:8080/account
 Content-Type: application/json

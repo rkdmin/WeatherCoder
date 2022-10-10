@@ -3,12 +3,13 @@ POST http://localhost:8080/join
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@nav1er.com",
+  "email": "22rkdmin@naver.com",
   "password": "a12345678!",
+  "gender" : "남성",
   "age": 1,
   "height": 1,
   "weight" : 1,
-  "styleList" : [ "댄디", "스트릿"]
+  "styleList" : ["댄디", "스트릿"]
 }
 
 

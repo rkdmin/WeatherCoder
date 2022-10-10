@@ -27,6 +27,7 @@ public class Member {
     private LocalDateTime regDate;
     private LocalDateTime dropDate;
 
+    private String gender;// "남성", "여성"
     private int age;// 1, 2, 3, 4, 5
     private int height;// 1, 2, 3, 4, 5
     private int weight;// 1, 2, 3, 4, 5
@@ -38,6 +39,7 @@ public class Member {
                 .status("F")// 이메일인증안해서 아직
                 .emailKey(UUID.randomUUID().toString())// 이메일 키
                 .regDate(LocalDateTime.now())
+                .gender(request.getGender())
                 .age(request.getAge())
                 .height(request.getHeight())
                 .weight(request.getWeight())

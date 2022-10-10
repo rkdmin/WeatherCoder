@@ -14,13 +14,18 @@ public class Clothes {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private int temp;// 기온
 
-    @Column
     private boolean isOuter;// 비 여부
 
-    @Column
     private String gender;// 성별
+
+    private int age;
+
+    private int height;
+
+    private int weight;
+
+    private String styleName;
 
 }

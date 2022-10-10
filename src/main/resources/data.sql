@@ -25,27 +25,10 @@
 --         '이강민', 'Y', '123', '1', '1');
 
 -- clothes 더미 데이터
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1000, 1, false, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1001, 2, false, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1002, 3, false, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1003, 4, false, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1004, 5, false, '남성');
-
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1005, 1, true, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1006, 2, true, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1007, 3, true, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1008, 4, true, '남성');
-INSERT INTO clothes(id, temp, is_outer, gender)
-VALUES (1009, 5, true, '남성');
+INSERT INTO clothes(id, temp, is_outer, gender, age, height, weight, style_name)
+VALUES (1000, 1, false, '남성', 1, 1, 1, '댄디');
+INSERT INTO clothes(id, temp, is_outer, gender, age, height, weight, style_name)
+VALUES (1001, 1, false, '남성', 1, 1, 1, '스트릿');
 
 INSERT INTO style(style_name)
 VALUES ('댄디');

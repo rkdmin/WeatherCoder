@@ -16,10 +16,8 @@ public class Suggest {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "email")
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "clothesId")
     private Clothes clothes;
 }

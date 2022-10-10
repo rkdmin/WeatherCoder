@@ -15,10 +15,10 @@ public class StyleRegistration {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "email")
     private Member member;
+    private String email;
 
     @ManyToOne
-    @JoinColumn(name = "style_name")
     private Style style;
+    private String styleName;
 }

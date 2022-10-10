@@ -43,7 +43,9 @@ public class StyleRegistrationService {
 
             styleRegistrationRepository.save(StyleRegistration.builder()
                             .member(member)
+                            .email(member.getEmail())
                             .style(optionalStyle.get())
+                            .styleName(optionalStyle.get().getStyleName())
                             .build());
         }
     }
