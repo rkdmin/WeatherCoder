@@ -12,7 +12,9 @@ public enum ErrorCode {
 
     FAIL_SEND_MAIL("메일 전송에 실패했습니다."),
     ALREADY_EXISTS_EMAIL("이미 존재하는 이메일입니다."),
-    INVALID_EMAIL_KEY("잘못된 이메일 키 입니다.")
+    INVALID_EMAIL_KEY("잘못된 이메일 키 입니다."),
+
+    STYLE_EMPTY("스타일이 없습니다.")
 
     ;
 

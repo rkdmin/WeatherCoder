@@ -6,6 +6,7 @@ import lombok.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 public class MemberDto {
     @AllArgsConstructor
@@ -24,6 +25,6 @@ public class MemberDto {
         private int age;// 1, 2, 3, 4, 5
         private int height;// 1, 2, 3, 4, 5
         private int weight;// 1, 2, 3, 4, 5
-        private String style;
+        private List<String> styleList;
     }
 }

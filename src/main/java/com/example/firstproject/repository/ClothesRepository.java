@@ -8,15 +8,15 @@ import java.util.Optional;
 
 public interface ClothesRepository extends JpaRepository<Clothes, Long> {
 
-    @Query(value = "SELECT c.id FROM Clothes c WHERE c.temp <= :temp + 3 AND " +
+    @Query(value = "SELECT * FROM Clothes c WHERE c.temp <= :temp + 3 AND " +
             "c.temp >= :temp - 3 AND  c.gender = :gender ORDER BY RAND() " +
             "LIMIT 1", nativeQuery = true)
-    Long suggest1(int temp, String gender);
+    Clothes suggest1(int temp, String gender);
 
-    @Query(value = "SELECT c.id FROM Clothes c WHERE c.temp <= :temp + 3 AND " +
+    @Query(value = "SELECT * FROM Clothes c WHERE c.temp <= :temp + 3 AND " +
             "c.temp >= :temp - 3 AND c.is_outer = :isOuter AND c.gender = " +
             ":gender" +
             " ORDER BY RAND() LIMIT 1", nativeQuery = true)
-    Long suggest1Outer(int temp, boolean isOuter, String gender);
+    Clothes suggest1Outer(int temp, boolean isOuter, String gender);
 
 }

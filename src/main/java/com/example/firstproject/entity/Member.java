@@ -16,8 +16,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class Member {
+
     @Id
     private String email;
+
     private String password;
     private String status;// S:활성 F:비활성 D:금지계정
     private String emailKey;
@@ -28,7 +30,6 @@ public class Member {
     private int age;// 1, 2, 3, 4, 5
     private int height;// 1, 2, 3, 4, 5
     private int weight;// 1, 2, 3, 4, 5
-    private String style;
 
     public static Member toEntity(MemberDto.Request request){
         return Member.builder()
@@ -40,7 +41,6 @@ public class Member {
                 .age(request.getAge())
                 .height(request.getHeight())
                 .weight(request.getWeight())
-                .style(request.getStyle())
                 .build();
     }
 

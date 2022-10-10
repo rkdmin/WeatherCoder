@@ -38,6 +38,5 @@ public class Comment {
         if(commentDto.getBody() != null){
             this.body = commentDto.getBody();
         }
-
     }
 }

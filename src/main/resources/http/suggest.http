@@ -1,10 +1,10 @@
 ### suggest1
-GET http://localhost:8080/suggest1
+POST http://localhost:8080/suggest1
 Content-Type: application/json
 
 {
-  "lowTemp" : 1111,
-  "highTemp" : 1111,
+  "lowTemp" : 1,
+  "highTemp" : 1,
   "gender" : "남성"
 }
 

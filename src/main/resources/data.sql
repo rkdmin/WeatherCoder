@@ -47,6 +47,13 @@ VALUES (1008, 4, true, '남성');
 INSERT INTO clothes(id, temp, is_outer, gender)
 VALUES (1009, 5, true, '남성');
 
+INSERT INTO style(style_name)
+VALUES ('댄디');
+INSERT INTO style(style_name)
+VALUES ('스트릿');
+INSERT INTO style(style_name)
+VALUES ('미니멀');
+
 
 
 

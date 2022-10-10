@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static com.example.firstproject.type.ErrorCode.*;
@@ -24,6 +25,8 @@ import static com.example.firstproject.type.ErrorCode.*;
 public class MemberService{
     private final MemberRepository memberRepository;
     private final MailComponents mailComponents;
+
+    private final StyleRegistrationService styleRegistrationService;
 
 
     // 회원가입
@@ -37,7 +40,11 @@ public class MemberService{
         // 비밀번호 암호화
         secPassword(member);
 
+        // 회원 정보 저장
         memberRepository.save(member);
+
+        // 스타일 등록
+        styleRegistrationService.registration(member, request.getStyleList());
 
         // 메일 전송
         sendEmail(request, member.getEmailKey());

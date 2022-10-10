@@ -1,16 +1,15 @@
 package com.example.firstproject.entity;
-
 import lombok.*;
 
 import javax.persistence.*;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-public class Suggest {
+public class StyleRegistration {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +19,6 @@ public class Suggest {
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "clothesId")
-    private Clothes clothes;
+    @JoinColumn(name = "style_name")
+    private Style style;
 }
