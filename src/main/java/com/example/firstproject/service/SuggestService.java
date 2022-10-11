@@ -7,6 +7,7 @@ import com.example.firstproject.repository.ClothesRepository;
 import com.example.firstproject.repository.MemberRepository;
 import com.example.firstproject.repository.StyleRegistrationRepository;
 import com.example.firstproject.repository.SuggestRepository;
+import com.example.firstproject.type.SuggestType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,9 @@ public class SuggestService {
 
     public List<Long> suggest1(List<ClothesDto1> dtoList) {
         // 예외 처리
+        if(dtoList == null){
+            throw new SuggestException(INVALID_REQUEST);
+        }
 
         List<Long> resultList = new ArrayList<>();
         List<Clothes> clothesList = new ArrayList<>();
@@ -64,6 +68,7 @@ public class SuggestService {
                 resultList.add(clothes.getId());
                 suggestRepository.save(Suggest.builder()
                                 .member(null)
+                                .suggestType(SuggestType.SUGGEST1_NON_MEMBER)
                                 .clothes(clothes)
                                 .build());
             }else{
@@ -138,6 +143,7 @@ public class SuggestService {
                 suggestRepository.save(Suggest.builder()
                         .member(member)
                         .clothes(clothes)
+                        .suggestType(SuggestType.SUGGEST2)
                         .build());
             }else{
                 resultList.add(null);

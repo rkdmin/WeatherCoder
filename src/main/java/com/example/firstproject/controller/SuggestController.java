@@ -21,7 +21,7 @@ import java.util.List;
 public class SuggestController {
     private final SuggestService clothesService;
 
-    @PostMapping("/suggest1")
+    @PostMapping("/suggest1-non-member")
     public Suggest1.Response suggest1(
             @Valid @RequestBody Suggest1.Request request,
             BindingResult bindingResult

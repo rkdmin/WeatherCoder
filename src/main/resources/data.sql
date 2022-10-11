@@ -30,6 +30,7 @@ VALUES (1000, 1, false, '남성', 1, 1, 1, '댄디');
 INSERT INTO clothes(id, temp, is_outer, gender, age, height, weight, style_name)
 VALUES (1001, 1, false, '남성', 1, 1, 1, '스트릿');
 
+-- style 더미 데이터
 INSERT INTO style(style_name)
 VALUES ('댄디');
 INSERT INTO style(style_name)

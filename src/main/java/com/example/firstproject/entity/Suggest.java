@@ -1,5 +1,6 @@
 package com.example.firstproject.entity;
 
+import com.example.firstproject.type.SuggestType;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,4 +21,7 @@ public class Suggest {
 
     @ManyToOne
     private Clothes clothes;
+
+    @Enumerated(EnumType.STRING)
+    private SuggestType suggestType;
 }
