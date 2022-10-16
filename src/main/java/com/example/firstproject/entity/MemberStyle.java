@@ -9,16 +9,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StyleRegistration {
+public class MemberStyle {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "member_email")
     private Member member;
-    private String email;
 
     @ManyToOne
+    @JoinColumn(name = "style_name")
     private Style style;
-    private String styleName;
 }

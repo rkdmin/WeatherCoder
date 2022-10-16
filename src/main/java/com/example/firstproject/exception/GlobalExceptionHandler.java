@@ -28,6 +28,13 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
     }
 
+    @ExceptionHandler(CategoryException.class)
+    public ErrorResponse handelCategoryException(CategoryException e){
+        log.error("{} is occurred", e.getErrorMassage());
+
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
+    }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ErrorResponse handelDataIntegrityViolationException(SuggestException e){
         log.error("DataIntegrityViolation is occurred");

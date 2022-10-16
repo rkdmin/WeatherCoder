@@ -1,0 +1,22 @@
+### reg
+POST http://localhost:8080/my-clothes
+Content-Type: application/json
+
+{
+  "email" : "22rkdmin@naver.com",
+  "seasonList" : [
+    {
+      "seasonName" : "봄",
+      "nameList" : ["청바지", "후드티"]
+    },
+    {
+      "seasonName" : "겨울",
+      "nameList" : ["패딩", "니트/스웨터"]
+    }
+  ]
+}
+
+
+### get account
+GET http://localhost:8080/account/?user_id=1
+Accept: application/json

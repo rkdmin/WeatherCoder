@@ -1,22 +1,22 @@
 package com.example.firstproject.service;
+
 import com.example.firstproject.aop.MailComponents;
 import com.example.firstproject.dto.MemberDto;
 import com.example.firstproject.entity.Member;
 import com.example.firstproject.exception.MemberException;
 import com.example.firstproject.repository.MemberRepository;
 import com.example.firstproject.security.SHA256;
-import com.example.firstproject.type.ErrorCode;
+import com.example.firstproject.type.MemberStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
-import static com.example.firstproject.type.ErrorCode.*;
+import static com.example.firstproject.type.ErrorCode.ALREADY_EXISTS_EMAIL;
+import static com.example.firstproject.type.ErrorCode.INVALID_EMAIL_KEY;
 
 @Service
 @Slf4j
@@ -26,7 +26,7 @@ public class MemberService{
     private final MemberRepository memberRepository;
     private final MailComponents mailComponents;
 
-    private final StyleRegistrationService styleRegistrationService;
+    private final MemberStyleService memberStyleService;
 
 
     // 회원가입
@@ -35,7 +35,7 @@ public class MemberService{
         validCreate(request);
 
         // 엔티티로 변경
-        Member member= Member.toEntity(request);
+        Member member = Member.toEntity(request);
 
         // 비밀번호 암호화
         secPassword(member);
@@ -44,7 +44,7 @@ public class MemberService{
         memberRepository.save(member);
 
         // 스타일 등록
-        styleRegistrationService.registration(member, request.getStyleList());
+        memberStyleService.registration(member, request.getStyleList());
 
         // 메일 전송
         sendEmail(request, member.getEmailKey());
@@ -59,7 +59,7 @@ public class MemberService{
         }
 
         Member member = optionalMember.get();
-        member.setStatus("Y");// 회원 활성 상태
+        member.setStatus(MemberStatus.S);// 회원 활성 상태
         member.setEmailKey("null");// 이메일 키를 비활성화
         memberRepository.save(member);// 업데이트
     }

@@ -1,11 +1,13 @@
 package com.example.firstproject.entity;
-import com.example.firstproject.dto.MemberDto;
-import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import com.example.firstproject.dto.MemberDto;
+import com.example.firstproject.type.MemberStatus;
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -21,7 +23,9 @@ public class Member {
     private String email;
 
     private String password;
-    private String status;// S:활성 F:비활성 D:금지계정
+
+    @Enumerated(EnumType.STRING)
+    private MemberStatus status;// S:활성 F:비활성 D:금지계정
     private String emailKey;
 
     private LocalDateTime regDate;
@@ -36,7 +40,7 @@ public class Member {
         return Member.builder()
                 .email(request.getEmail())
                 .password(request.getPassword())
-                .status("F")// 이메일인증안해서 아직
+                .status(MemberStatus.F)// 이메일인증안해서 아직
                 .emailKey(UUID.randomUUID().toString())// 이메일 키
                 .regDate(LocalDateTime.now())
                 .gender(request.getGender())

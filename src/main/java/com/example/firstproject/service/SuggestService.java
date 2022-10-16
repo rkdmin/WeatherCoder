@@ -1,20 +1,24 @@
 package com.example.firstproject.service;
+
 import com.example.firstproject.dto.ClothesDto1;
 import com.example.firstproject.dto.ClothesDto2;
-import com.example.firstproject.entity.*;
+import com.example.firstproject.entity.Clothes;
+import com.example.firstproject.entity.Member;
+import com.example.firstproject.entity.MemberStyle;
+import com.example.firstproject.entity.Suggest;
 import com.example.firstproject.exception.SuggestException;
 import com.example.firstproject.repository.ClothesRepository;
 import com.example.firstproject.repository.MemberRepository;
-import com.example.firstproject.repository.StyleRegistrationRepository;
+import com.example.firstproject.repository.MemberStyleRepository;
 import com.example.firstproject.repository.SuggestRepository;
 import com.example.firstproject.type.SuggestType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +32,7 @@ public class SuggestService {
     private final ClothesRepository clothesRepository;
     private final SuggestRepository suggestRepository;
     private final MemberRepository memberRepository;
-    private final StyleRegistrationRepository styleRegistrationRepository;
+    private final MemberStyleRepository memberStyleRepository;
 
     public List<Long> suggest1(List<ClothesDto1> dtoList) {
         // 예외 처리
@@ -82,9 +86,10 @@ public class SuggestService {
 
     public List<Long> suggest2(List<ClothesDto2> dtoList) {
         // 예외 처리
-        if(dtoList == null){
+        if(CollectionUtils.isEmpty(dtoList)){
             throw new SuggestException(INVALID_REQUEST);
         }
+
         String email = dtoList.get(0).getEmail();// 회원 이메일
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
         if(!optionalMember.isPresent()){
@@ -92,9 +97,9 @@ public class SuggestService {
         }
 
         // 회원-스타일 전부 불러오기
-        List<StyleRegistration> styleRegistrationList
-                = styleRegistrationRepository.findAllByEmail(email);
-        if(styleRegistrationList == null){
+        List<MemberStyle> memberStyleList
+                = memberStyleRepository.findAllByMember_Email(email);
+        if(memberStyleList == null){
             throw new SuggestException(INVALID_REQUEST);
         }
         Member member = optionalMember.get();
@@ -104,31 +109,29 @@ public class SuggestService {
 
         // 최저 기온 옷 추천
         // 겉옷이 필수
-        int styleIndex = styleRandom(styleRegistrationList.size());// 랜덤 인덱스로 스타일 선택
-        log.info("{} -> " + styleRegistrationList.size());
-        log.info("{} -> " + styleIndex);
+        int styleIndex = styleRandom(memberStyleList.size());// 랜덤 인덱스로 스타일 선택
         if(dtoList.get(0).isOuter()){
             // 최저 기온 옷 추천
             clothesList.add(clothesRepository.suggest2Outer(
                     dtoList.get(0).getTemp(), member.getGender(),
                     dtoList.get(0).isOuter(), member.getAge(),
                     member.getHeight(), member.getWeight(),
-                    styleRegistrationList.get(styleIndex).getStyleName()
+                    memberStyleList.get(styleIndex).getStyle().getStyleName()
             ));
         }else{// 겉옷이 필수가 아님
             clothesList.add(clothesRepository.suggest2(
                     dtoList.get(0).getTemp(), member.getGender(), member.getAge(),
                     member.getHeight(), member.getWeight(),
-                    styleRegistrationList.get(styleIndex).getStyleName()
+                    memberStyleList.get(styleIndex).getStyle().getStyleName()
             ));
         }
 
         // 최고 기온 옷 추천
-        styleIndex = styleRandom(styleRegistrationList.size());// 랜덤 인덱스로 스타일 선택
+        styleIndex = styleRandom(memberStyleList.size());// 랜덤 인덱스로 스타일 선택
         clothesList.add(clothesRepository.suggest2(
                 dtoList.get(1).getTemp(), member.getGender(), member.getAge(),
                 member.getHeight(), member.getWeight(),
-                styleRegistrationList.get(styleIndex).getStyleName()
+                memberStyleList.get(styleIndex).getStyle().getStyleName()
         ));
 
         // 알맞은 옷이 없음

@@ -17,7 +17,7 @@ public class Comment {
     private Long id;
 
     @ManyToOne// 일대다 관계 설정
-    @JoinColumn(name = "articleId")// Article 내의 article_id란 외부키 설정
+    @JoinColumn(name = "article_id")// Article 내의 article_id란 외부키 설정
     private Article article;
 
     @Column

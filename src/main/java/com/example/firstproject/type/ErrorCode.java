@@ -14,7 +14,8 @@ public enum ErrorCode {
     ALREADY_EXISTS_EMAIL("이미 존재하는 이메일입니다."),
     INVALID_EMAIL_KEY("잘못된 이메일 키 입니다."),
     MEMBER_EMPTY("회원이 없습니다."),
-    STYLE_EMPTY("스타일이 없습니다.")
+    STYLE_EMPTY("스타일이 없습니다."),
+    CATEGORY_EMPTY("알맞은 카테고리가 없습니다.")
 
     ;
 

@@ -22,7 +22,7 @@ public class SuggestController {
     private final SuggestService clothesService;
 
     @PostMapping("/suggest1-non-member")
-    public Suggest1.Response suggest1(
+    public Suggest1.Response suggest1_Non_Member(
             @Valid @RequestBody Suggest1.Request request,
             BindingResult bindingResult
             ){

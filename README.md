@@ -13,8 +13,8 @@ Content-Type: application/json
 "height": ?,
 "weight" : ?,
 "styleList" : ["?", "?"]
-}   
-gender는 "남성", "여성" age, height, weight는 1 ~ 5까지 styleList는 String형 List
+}  
+[참고] : gender는 "남성", "여성" age, height, weight는 1 ~ 5까지 styleList는 String형 List
 
 
 받는데이터  
