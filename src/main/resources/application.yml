@@ -30,4 +30,4 @@ spring:
       mail:
         smtp:
           starttls:
-            enable: true
+            enable: trues

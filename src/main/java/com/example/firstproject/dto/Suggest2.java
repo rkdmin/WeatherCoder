@@ -57,7 +57,7 @@ public class Suggest2 {
 
             for(Long item: list){
                 if(item != null){
-                    result.add("http://localhost:8080/img/" + item.toString());
+                    result.add("https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/" + item.toString() + ".jpg");
                 }else{
                     result.add(null);
                 }

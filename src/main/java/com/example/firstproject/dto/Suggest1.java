@@ -57,8 +57,7 @@ public class Suggest1 {
 
             for(Long item: list){
                 if(item != null){
-                    result.add("https://res.cloudinary" +
-                            ".com/dlfi4irub/image/upload/v1664979491/" + item.toString() + ".png");
+                    result.add("https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/" + item.toString() + ".jpg");
                 }else{
                     result.add(null);
                 }

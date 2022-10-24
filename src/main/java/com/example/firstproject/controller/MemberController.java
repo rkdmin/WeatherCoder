@@ -2,7 +2,6 @@ package com.example.firstproject.controller;
 
 import com.example.firstproject.dto.CategoryParam;
 import com.example.firstproject.dto.MemberDto;
-import com.example.firstproject.dto.SeasonInfo;
 import com.example.firstproject.exception.MemberException;
 import com.example.firstproject.service.MemberCategoryService;
 import com.example.firstproject.service.MemberService;
