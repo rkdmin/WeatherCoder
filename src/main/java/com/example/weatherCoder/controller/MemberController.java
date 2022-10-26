@@ -2,9 +2,11 @@ package com.example.weatherCoder.controller;
 
 import com.example.weatherCoder.dto.CategoryParam;
 import com.example.weatherCoder.dto.MemberDto;
+import com.example.weatherCoder.dto.StyleParam;
 import com.example.weatherCoder.exception.MemberException;
 import com.example.weatherCoder.service.MemberCategoryService;
 import com.example.weatherCoder.service.MemberService;
+import com.example.weatherCoder.service.MemberStyleService;
 import com.example.weatherCoder.type.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +29,7 @@ import java.util.List;
 public class MemberController {
     private final MemberService memberService;
     private final MemberCategoryService memberCategoryService;
+    private final MemberStyleService memberStyleService;
 
     @PostMapping("/join")
     public String create(@RequestBody @Valid MemberDto.Request request,
@@ -57,6 +61,17 @@ public class MemberController {
         memberCategoryService.registration(request);
 
         return "카테고리 저장이 완료되었습니다.";
+    }
+
+    @PostMapping("/my-style")
+    public String setStyle(@RequestBody @Valid StyleParam.Request request,
+        BindingResult bindingResult){
+        // @valid 발생
+        validation(bindingResult);
+
+        memberStyleService.update(request);
+
+        return "스타일 수정이 완료되었습니다.";
     }
 
     private static void validation(BindingResult bindingResult) {

@@ -1,4 +1,4 @@
-### create
+### 회원가입
 POST http://localhost:8080/join
 Content-Type: application/json
 
@@ -12,18 +12,13 @@ Content-Type: application/json
   "styleList" : ["댄디", "캐주얼", "놈코어"]
 }
 
-### registration
-POST http://localhost:8080/join
+### 회원 스타일 수정
+POST http://localhost:8080/my-style
 Content-Type: application/json
 
 {
   "email": "22rkdmin@naver.cm",
-  "password": "a12345678!",
-  "gender" : "여성",
-  "age": 2,
-  "height": 3,
-  "weight" : 2,
-  "styleList" : ["댄디", "캐주얼", "놈코어"]
+  "styleList" : ["댄디", "놈코어"]
 }
 
 ### get account

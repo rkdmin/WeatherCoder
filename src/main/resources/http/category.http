@@ -15,8 +15,3 @@ Content-Type: application/json
     }
   ]
 }
-
-
-### get account
-GET http://localhost:8080/account/?user_id=1
-Accept: application/json

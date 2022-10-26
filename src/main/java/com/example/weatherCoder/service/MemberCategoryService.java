@@ -62,6 +62,9 @@ public class MemberCategoryService {
             throw new CategoryException(MEMBER_EMPTY);
         }
 
+        // 회원의 카테고리 초기화
+        memberCategoryRepository.deleteAllByMember_Email(request.getEmail());
+
         // 회원-카테고리 테이블 insert
         for(Category category: categoryList){
             memberCategoryRepository.save(MemberCategory.builder()
@@ -78,5 +81,6 @@ public class MemberCategoryService {
         if(CollectionUtils.isEmpty(request.getSeasonList())){
             throw new CategoryException(INVALID_REQUEST);
         }
+
     }
 }

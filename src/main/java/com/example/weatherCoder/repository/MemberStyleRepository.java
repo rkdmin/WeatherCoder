@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface MemberStyleRepository extends JpaRepository<MemberStyle, Long> {
     List<MemberStyle> findAllByMember_Email(String email);
+
+    void deleteAllByMember_Email(String email);
 }

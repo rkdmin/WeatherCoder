@@ -1,35 +1,52 @@
 # WeatherCoder
 
-## 회원가입 기능 
-### 1. create  
+## 회원
+### 회원가입
 POST http://localhost:8080/join   
 Content-Type: application/json
 
-{
-"email": "?",
-"password": "?",
-"gender" : "?",
-"age": ?,
-"height": ?,
-"weight" : ?,
-"styleList" : ["?", "?"]
-}  
+{  
+  "email": "?",  
+  "password": "?",  
+  "gender" : "?",  
+  "age": ?,  
+  "height": ?,  
+  "weight" : ?,  
+  "styleList" : ["?", "?"]    
+}    
 [참고] : gender는 "남성", "여성" age, height, weight는 1 ~ 5까지 styleList는 String형 List
 
+### 회원 카테고리 등록
+POST http://localhost:8080/my-clothes
+Content-Type: application/json
+
+{  
+  "email" : "?",      
+  "seasonList" : [  
+  {
+  "seasonName" : "봄",
+  "nameList" : ["가디건", "후드티"]
+  },
+  {
+  "seasonName" : "겨울",
+  "nameList" : ["패딩", "니트/스웨터"]}  
+  ]  
+}
 
 받는데이터  
 - {
-"errorCode": "ALREADY_EXISTS_EMAIL",
-"errorMessage": "이미 존재하는 이메일입니다."
+"errorCode": "INVALID_REQUEST",
+"errorMessage": "잘못된 요청입니다."
 }
 - {
   "errorCode": "INVALID_REQUEST",
-  "errorMessage": "비밀번호는 영어, 숫자, 특수문자 포함해서 8~16자리 이내로 입력해주세요."
+  "errorMessage": "이메일이 없습니다."
   }
-- 회원가입이 완료되었습니다.
+- 카테고리 저장이 완료되었습니다.
+
 
 ## 옷추천 기능 
-### 1. suggest1
+### 날씨로 옷 추천(비회원)
 POST http://localhost:8080/suggest1-non-member  
 Content-Type: application/json
 
@@ -55,7 +72,7 @@ Content-Type: application/json
   "errorMessage": "적합한 옷이 없습니다."
   }
 
-### 2. suggest2
+### 회원 정보로 옷 추천
 POST http://localhost:8080/suggest2  
 Content-Type: application/json   
 
@@ -87,9 +104,10 @@ Content-Type: application/json
 - {
   "errorCode": "INVALID_REQUEST",
   "errorMessage": "최고기온이 없습니다."
-  }    
-- 
-### 3. suggest2
+  }
+
+
+### 회원이 등록한 옷 카테고리로 옷 추천
 POST http://localhost:8080/suggest3  
 Content-Type: application/json
 
