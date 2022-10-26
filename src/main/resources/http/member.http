@@ -3,15 +3,28 @@ POST http://localhost:8080/join
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@naver.com",
+  "email": "22rkdmin@naver.cm",
   "password": "a12345678!",
-  "gender" : "남성",
-  "age": 1,
-  "height": 1,
-  "weight" : 1,
-  "styleList" : ["댄디", "스트릿"]
+  "gender" : "여성",
+  "age": 2,
+  "height": 3,
+  "weight" : 2,
+  "styleList" : ["댄디", "캐주얼", "놈코어"]
 }
 
+### registration
+POST http://localhost:8080/join
+Content-Type: application/json
+
+{
+  "email": "22rkdmin@naver.cm",
+  "password": "a12345678!",
+  "gender" : "여성",
+  "age": 2,
+  "height": 3,
+  "weight" : 2,
+  "styleList" : ["댄디", "캐주얼", "놈코어"]
+}
 
 ### get account
 GET http://localhost:8080/account/?user_id=1

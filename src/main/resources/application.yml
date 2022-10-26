@@ -1,20 +1,14 @@
 spring:
-  redis:
-    host: 127.0.0.1
-    port: 6379
   datasource:
-    url: jdbc:h2:mem:test
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
-  h2:
-    console:
-      enabled: true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/weathercoder?serverTimezone=UTC&characterEncoding=UTF8
+    username: root
+    password: root
   jpa:
-    defer-datasource-initialization: true # true로하면 data.sql사용
-    database-platform: H2
+#    defer-datasource-initialization: true # true로하면 data.sql사용
+    database: mysql
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     open-in-view: false
     properties:
       hibernate:

@@ -3,11 +3,11 @@ POST http://localhost:8080/my-clothes
 Content-Type: application/json
 
 {
-  "email" : "22rkdmin@naver.com",
+  "email" : "22rkdmin@naver.cm",
   "seasonList" : [
     {
       "seasonName" : "봄",
-      "nameList" : ["청바지", "후드티"]
+      "nameList" : ["가디건", "후드티"]
     },
     {
       "seasonName" : "겨울",

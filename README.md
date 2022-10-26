@@ -41,8 +41,8 @@ Content-Type: application/json
 
 받는데이터  
 - {"clothesList": [
-  "http://localhost:8080/img/1005",
-  "http://localhost:8080/img/1005"
+  "https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/1050.jpg",
+  "https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/1063.jpg"
   ]}
 - {
    "clothesList": [
@@ -68,8 +68,8 @@ Content-Type: application/json
 받는데이터
 - {
   "clothesList": [
-  "http://localhost:8080/img/1001",
-  "http://localhost:8080/img/1000"
+  "https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/1050.jpg",
+  "https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/1063.jpg"
   ]
   }
 - {
@@ -87,6 +87,40 @@ Content-Type: application/json
 - {
   "errorCode": "INVALID_REQUEST",
   "errorMessage": "최고기온이 없습니다."
+  }    
+- 
+### 3. suggest2
+POST http://localhost:8080/suggest3  
+Content-Type: application/json
+
+{
+"lowTemp" : ?,
+"highTemp" : ?,
+"email" : "?"
+}
+
+받는데이터
+- {
+  "clothesList": [
+  "https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/1050.jpg",
+  "https://res.cloudinary.com/dohqejduh/image/upload/v1666072183/1063.jpg"
+  ]
+  }
+- {
+  "errorCode": "MEMBER_EMPTY",
+  "errorMessage": "회원이 없습니다."
+  }
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "잘못된 요청입니다."
+  }
+- {
+  "errorCode": "CATEGORY_EMPTY",
+  "errorMessage": "알맞은 카테고리가 없습니다."
+  }
+- {
+  "errorCode": "CLOTHES_EMPTY",
+  "errorMessage": "적합한 옷이 없습니다."
   }
 
 
