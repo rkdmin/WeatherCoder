@@ -24,25 +24,43 @@ Content-Type: application/json
   "email" : "?",      
   "seasonList" : [  
   {
-  "seasonName" : "봄",
-  "nameList" : ["가디건", "후드티"]
+  "seasonName" : "?",
+  "nameList" : ["?", "?"]
   },
   {
-  "seasonName" : "겨울",
-  "nameList" : ["패딩", "니트/스웨터"]}  
+  "seasonName" : "?",
+  "nameList" : ["?", "?"]}  
   ]  
 }
 
+### 회원 스타일 수정
+POST http://localhost:8080/my-style
+Content-Type: application/json
+
+{    
+"email" : "?",      
+"styleList" : ["?", "?"]  
+}  
+
 받는데이터  
-- {
-"errorCode": "INVALID_REQUEST",
-"errorMessage": "잘못된 요청입니다."
-}
 - {
   "errorCode": "INVALID_REQUEST",
   "errorMessage": "이메일이 없습니다."
   }
-- 카테고리 저장이 완료되었습니다.
+- {
+  "errorCode": "MEMBER_EMPTY",
+  "errorMessage": "회원이 없습니다."
+  }
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "스타일이 없습니다."
+  }
+- {
+  "errorCode": "STYLE_EMPTY",
+  "errorMessage": "스타일이 없습니다."
+  }
+- 스타일 수정이 완료되었습니다.
+
 
 
 ## 옷추천 기능 
