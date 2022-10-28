@@ -2,17 +2,23 @@ package com.example.weatherCoder.controller;
 
 import com.example.weatherCoder.dto.ArticleDto;
 import com.example.weatherCoder.entity.Article;
+import com.example.weatherCoder.exception.ArticleException;
+import com.example.weatherCoder.exception.MemberException;
 import com.example.weatherCoder.service.ArticleService;
+import com.example.weatherCoder.type.ErrorCode;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
 @Slf4j
-@RestController// RestAPI 용 컨트롤러! 데이터(JSON)를 반환
+@RestController
 @RequiredArgsConstructor
 @Transactional
 public class ArticleController {
@@ -22,36 +28,37 @@ public class ArticleController {
     // GET
     // 전체조회
     @GetMapping("/articles")
-    public List<Article> showList(){
+    public List<ArticleDto> showList(){
         // 모든 Article 데이터를 조회
         return articleService.showList();
     }
 
     // id로 조회
     @GetMapping("/articles/{id}")
-    public Article show(@PathVariable Long id){
+    public ArticleDto show(@PathVariable Long id){
         return articleService.show(id);
     }
 
     // POST
     @PostMapping("/articles/new")
-    public ResponseEntity<Article> create(@RequestBody ArticleDto dto){
-        Article created = articleService.create(dto);
+    public String create(@RequestBody @Valid ArticleDto dto, BindingResult bindingResult){
 
-        return (created != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(created):
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        // @valid 발생
+        validation(bindingResult);
+
+        articleService.create(dto);
+
+        return "게시글 작성이 완료되었습니다.";
     }
 
     // PATCH
     @PatchMapping("/articles/{id}/edit")
-    public ResponseEntity<Article> edit(@RequestBody ArticleDto dto,
+    public String edit(@RequestBody ArticleDto dto, BindingResult bindingResult,
                         @PathVariable Long id){
-        Article updated = articleService.edit(dto, id);
 
-        return (updated != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(updated):
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        articleService.edit(dto, id);
+
+        return "게시글 수정이 완료되었습니다.";
     }
 
     // DELETE
@@ -73,5 +80,11 @@ public class ArticleController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
+    private static void validation(BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            List<FieldError> list = bindingResult.getFieldErrors();
+            throw new ArticleException(ErrorCode.INVALID_REQUEST, list.get(0).getDefaultMessage().toString());
+        }
+    }
 
 }

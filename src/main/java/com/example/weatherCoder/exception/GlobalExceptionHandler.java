@@ -21,6 +21,13 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
     }
 
+    @ExceptionHandler(ArticleException.class)
+    public ErrorResponse handelArticleException(ArticleException e){
+        log.error("{} is occurred", e.getErrorMassage());
+
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
+    }
+
     @ExceptionHandler(MemberException.class)
     public ErrorResponse handelMemberException(MemberException e){
         log.error("{} is occurred", e.getErrorMassage());

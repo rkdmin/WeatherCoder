@@ -16,6 +16,25 @@ Content-Type: application/json
 }    
 [참고] : gender는 "남성", "여성" age, height, weight는 1 ~ 5까지 styleList는 String형 List
 
+받는데이터
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "스타일을 선택하세요."
+  }
+- {
+  "errorCode": "STYLE_EMPTY",
+  "errorMessage": "스타일이 없습니다."
+  }
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "비밀번호는 영어, 숫자, 특수문자 포함해서 8~16자리 이내로 입력해주세요."
+  }
+- {
+  "errorCode": "ALREADY_EXISTS_EMAIL",
+  "errorMessage": "이미 존재하는 이메일입니다."
+  }
+- 회원가입이 완료되었습니다.
+
 ### 회원 카테고리 등록
 POST http://localhost:8080/my-clothes
 Content-Type: application/json
@@ -32,6 +51,21 @@ Content-Type: application/json
   "nameList" : ["?", "?"]}  
   ]  
 }
+
+받는데이터
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "잘못된 요청입니다."
+  }
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "계절 리스트가 없습니다."
+  }
+- {
+    "errorCode": "CATEGORY_EMPTY",
+    "errorMessage": "알맞은 카테고리가 없습니다."
+  }
+- 카테고리 저장이 완료되었습니다.
 
 ### 회원 스타일 수정
 POST http://localhost:8080/my-style
@@ -159,6 +193,62 @@ Content-Type: application/json
   "errorMessage": "적합한 옷이 없습니다."
   }
 
+## 게시판 및 댓글
+### 게시글 쓰기
+POST http://localhost:8080/articles/new  
+Content-Type: application/json
 
+{  
+"title" : "두번째 게시글",  
+"content" : "두번째 게시글 입니다."  
+}  
+
+받는데이터
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "내용이 없습니다."
+  }
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "제목이 없습니다."
+  }
+- {
+  "errorCode": "EXIST_ID",
+  "errorMessage": "고유번호가 존재하면 안됩니다."
+  }
+- 게시글 작성이 완료되었습니다.
+
+### 게시글 전체 읽기
+GET http://localhost:8080/articles  
+Accept: application/json
+
+받는데이터
+- [  
+  {
+  "id": 1,
+  "title": "첫번째 게시글",
+  "content": "첫번째 게시글 입니다."  
+  },
+  {
+  "id": 2,
+  "title": "게시글",
+  "content": "게시글 입니다."
+  }  
+  ]
+
+### 게시글 id로 읽기
+GET http://localhost:8080/articles/{id}  
+Accept: application/json
+
+받는데이터
+- {
+  "errorCode": "ARTICLE_EMPTY",
+  "errorMessage": "게시글이 없습니다."
+  }
+- - {
+    "id": 2,
+    "title": "게시글",
+    "content": "게시글 입니다."
+    }
 
 

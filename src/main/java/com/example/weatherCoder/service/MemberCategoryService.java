@@ -9,6 +9,7 @@ import com.example.weatherCoder.exception.CategoryException;
 import com.example.weatherCoder.repository.CategoryRepository;
 import com.example.weatherCoder.repository.MemberCategoryRepository;
 import com.example.weatherCoder.repository.MemberRepository;
+import com.example.weatherCoder.type.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -79,8 +80,7 @@ public class MemberCategoryService {
     private void validationRegistration(CategoryParam.Request request) {
         // 리스트가 비어있음
         if(CollectionUtils.isEmpty(request.getSeasonList())){
-            throw new CategoryException(INVALID_REQUEST);
+            throw new CategoryException(CATEGORY_EMPTY);
         }
-
     }
 }

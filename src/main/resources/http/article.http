@@ -1,3 +1,16 @@
-### get all articles
+### 게시글 전체 읽기
 GET http://localhost:8080/articles
 Accept: application/json
+
+### 게시글 id로 읽기
+GET http://localhost:8080/articles/4
+Accept: application/json
+
+### 게시판 작성
+POST http://localhost:8080/articles/new
+Content-Type: application/json
+
+{
+  "title": "게시글",
+  "content": "게시글 입니다."
+}
