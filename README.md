@@ -325,6 +325,22 @@ Accept: application/json
   }
   ]
 
+### 게시글 수정
+PATCH http://localhost:8080/articles/comment/{comment_id}/edit
+Content-Type: application/json
+
+{  
+"nickname" : "?",  
+"body" : "?"  
+}
+
+받는데이터
+- {
+"errorCode": "INVALID_COMMENT_ID",
+"errorMessage": "잘못된 댓글 번호입니다."
+}
+- 댓글 수정이 완료되었습니다.
+
 
 
 

@@ -2,10 +2,6 @@
 GET http://localhost:8080/articles/5/comments
 Accept: application/json
 
-### 게시글 id로 읽기
-GET http://localhost:8080/articles/4
-Accept: application/json
-
 ### 댓글 작성
 POST http://localhost:8080/articles/5/comment/new
 Content-Type: application/json
@@ -15,13 +11,13 @@ Content-Type: application/json
   "body": "댓글 입니다."
 }
 
-### 게시판 수정
-PATCH http://localhost:8080/articles/12/edit
+### 댓글 수정
+PATCH http://localhost:8080/articles/comment/5/edit
 Content-Type: application/json
 
 {
-  "title": "게시글 수정",
-  "content": "게시글 수정 입니다."
+  "nickname": "홍길동 수정",
+  "body": "댓글 수정."
 }
 
 ### 게시판 삭제

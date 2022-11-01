@@ -18,7 +18,8 @@ public enum ErrorCode {
     CATEGORY_EMPTY("알맞은 카테고리가 없습니다."),
     EXIST_ID("고유번호가 존재하면 안됩니다."),
     ARTICLE_EMPTY("게시글이 없습니다."),
-    INVALID_ARTICLE_ID("잘못된 게시글 번호입니다.")
+    INVALID_ARTICLE_ID("잘못된 게시글 번호입니다."),
+    INVALID_COMMENT_ID("잘못된 댓글 번호입니다.")
 
     ;
 

@@ -51,25 +51,18 @@ public class CommentService {
 
     // 댓글 수정
     @Transactional
-    public CommentDto edit(Long id, CommentDto commentDto) {
-//        commentDto.setId(id);// id 설정
-//        // 예외
-//        Comment commentEntity = commentRepository.findById(id).orElseThrow(
-//                () -> new IllegalArgumentException("댓글 수정 실패! 댓글이 없습니다."));// 1.요청한 id로 찾아본 데이터가 db에 없는 경우
-//        if(id != commentDto.getId()){
-//            throw new IllegalArgumentException("댓글 수정 실패! 잘못된 id가 입력되었습니다.");// 2. 요청한 id와 db속 id가 다른 경우
-//        }
-//
-//        // 수정
-//        commentEntity.patch(commentDto);
-//
-//        // 저장
-//        Comment edited = commentRepository.save(commentEntity);
-//
-//        // 결과
-//        return edited.toDto();
+    public void edit(Long id, CommentDto commentDto) {
+        commentDto.setId(id);// id 설정
+        Comment comment = commentRepository.findById(id).orElseThrow(
+                () -> new CommentException(ErrorCode.INVALID_COMMENT_ID));// 1.요청한 id로 찾아본 데이터가 db에 없는 경우
+        if(id != commentDto.getId()){
+            throw new CommentException(ErrorCode.INVALID_COMMENT_ID);// 2. 요청한 id와 db속 id가 다른 경우
+        }
 
-        return null;
+        // 수정
+        comment.patch(commentDto);
+
+        commentRepository.save(comment);
     }
 
     // 댓글삭제

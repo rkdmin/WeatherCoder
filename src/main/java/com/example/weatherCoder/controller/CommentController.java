@@ -44,20 +44,20 @@ public class CommentController {
 
     // 댓글 수정
     @PatchMapping("/articles/comment/{id}/edit")
-    public ResponseEntity<CommentDto> editComment(@PathVariable Long id, @RequestBody CommentDto commentDto){
+    public String editComment(@PathVariable Long id, @RequestBody CommentDto commentDto){
 
-        CommentDto edited = commentService.edit(id, commentDto);
+        commentService.edit(id, commentDto);
 
-        return ResponseEntity.status(HttpStatus.OK).body(edited);
+        return "댓글 수정이 완료되었습니다.";
     }
 
     // 댓글 삭제
     @DeleteMapping("/articles/comment/{id}/delete")
-    public ResponseEntity<CommentDto> deleteComment(@PathVariable Long id){
+    public String deleteComment(@PathVariable Long id){
 
-        CommentDto deleted = commentService.delete(id);
+        commentService.delete(id);
 
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return "댓글 삭제가 완료되었습니다.";
     }
 
     private static void validation(BindingResult bindingResult) {
