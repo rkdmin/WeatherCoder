@@ -305,6 +305,26 @@ Content-Type: application/json
   }
 - 댓글 작성이 완료되었습니다.
 
+### 댓글 목록 조회
+GET http://localhost:8080/articles/{aritcle_id}/comments
+Accept: application/json
+
+받는데이터
+- [
+  {
+  "id": 4,
+  "articleId": 5,
+  "nickname": "홍길동",
+  "body": "댓글 입니다."
+  },
+  {
+  "id": 5,
+  "articleId": 5,
+  "nickname": "홍길동",
+  "body": "댓글 입니다."
+  }
+  ]
+
 
 
 

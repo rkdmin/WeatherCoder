@@ -2,6 +2,8 @@ package com.example.weatherCoder.dto;
 
 import com.example.weatherCoder.entity.Article;
 import com.example.weatherCoder.entity.Comment;
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -20,7 +22,16 @@ public class CommentDto {
     @NotBlank(message = "내용이 없습니다.")
     private String body;
 
-    public CommentDto toDto(Comment comment) {
+    public static List<CommentDto> toDtoList(List<Comment> commentList) {
+        List<CommentDto> commentDtoList = new ArrayList<>();
+        for(Comment comment: commentList){
+            commentDtoList.add(toDto(comment));
+        }
+
+        return commentDtoList;
+    }
+
+    public static CommentDto toDto(Comment comment) {
         return CommentDto.builder()
             .id(comment.getId())
             .articleId(comment.getArticle().getId())

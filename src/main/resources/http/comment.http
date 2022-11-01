@@ -1,5 +1,5 @@
-### 게시글 전체 읽기
-GET http://localhost:8080/articles
+### 댓글 목록 조회
+GET http://localhost:8080/articles/5/comments
 Accept: application/json
 
 ### 게시글 id로 읽기
@@ -7,7 +7,7 @@ GET http://localhost:8080/articles/4
 Accept: application/json
 
 ### 댓글 작성
-POST http://localhost:8080/articles/1/comment/new
+POST http://localhost:8080/articles/5/comment/new
 Content-Type: application/json
 
 {

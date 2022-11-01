@@ -7,6 +7,7 @@ import com.example.weatherCoder.exception.CommentException;
 import com.example.weatherCoder.repository.ArticleRepository;
 import com.example.weatherCoder.repository.CommentRepository;
 import com.example.weatherCoder.type.ErrorCode;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,22 +27,9 @@ public class CommentService {
     // 댓글 목록조회
     public List<CommentDto> showCommentList(Long articleId){
         // 조회
-        List<Comment> commentEntityList = commentRepository.findByArticleId(articleId);
+        List<Comment> commentList = commentRepository.findByArticleId(articleId);
 
-//        // entity -> dto
-//        List<CommentVO> commentDtoList = new ArrayList<CommentVO>();
-//        for(int i = 0; i < commentEntityList.size(); i++){
-//            Comment commentEntity = commentEntityList.get(i);// 하나하나 쪼개고
-//            CommentVO commentDto = commentEntity.toDto();// dto로 변환해서
-//            commentDtoList.add(commentDto);
-//        }
-//
-//        // 반환
-//        return commentRepository.findByArticleId(articleId)
-//                .stream()// 하나하나 꺼내옴
-//                .map(commentEntity -> commentEntity.toDto())// 꺼내온 commentEntity를 -> commentDto로 변환
-//                .collect(Collectors.toList());// 반환형이 List이기에 형변환
-        return null;
+        return CommentDto.toDtoList(commentList);
     }
 
     // 댓글 생성
