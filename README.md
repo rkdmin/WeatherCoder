@@ -35,8 +35,8 @@ Content-Type: application/json
   }
 - 회원가입이 완료되었습니다.
 
-### 회원 카테고리 등록 / 수정
-POST http://localhost:8080/my-clothes
+### 회원 카테고리 등록 / 수정    
+POST http://localhost:8080/my-clothes   
 Content-Type: application/json
 
 {  
@@ -68,7 +68,7 @@ Content-Type: application/json
 - 카테고리 저장이 완료되었습니다.
 
 ### 회원 스타일 수정
-POST http://localhost:8080/my-style
+POST http://localhost:8080/my-style  
 Content-Type: application/json
 
 {    
@@ -252,7 +252,7 @@ Accept: application/json
     }
 
 ### 게시글 수정
-PATCH http://localhost:8080/articles/{id}/edit 
+PATCH http://localhost:8080/articles/{id}/edit   
 Content-Type: application/json
 
 {  
@@ -306,7 +306,7 @@ Content-Type: application/json
 - 댓글 작성이 완료되었습니다.
 
 ### 댓글 목록 조회
-GET http://localhost:8080/articles/{aritcle_id}/comments
+GET http://localhost:8080/articles/{aritcle_id}/comments  
 Accept: application/json
 
 받는데이터
@@ -325,8 +325,8 @@ Accept: application/json
   }
   ]
 
-### 게시글 수정
-PATCH http://localhost:8080/articles/comment/{comment_id}/edit
+### 댓글 수정
+PATCH http://localhost:8080/articles/comment/{comment_id}/edit  
 Content-Type: application/json
 
 {  
@@ -341,6 +341,14 @@ Content-Type: application/json
 }
 - 댓글 수정이 완료되었습니다.
 
+### 댓글 삭제
+DELETE http://localhost:8080/articles/comment/{comment_id}/delete
 
+받는데이터
+- {
+  "errorCode": "COMMENT_EMPTY",
+  "errorMessage": "댓글이 없습니다."
+  }
+- 댓글 삭제가 완료되었습니다.
 
 

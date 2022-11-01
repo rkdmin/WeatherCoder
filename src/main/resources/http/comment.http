@@ -20,5 +20,5 @@ Content-Type: application/json
   "body": "댓글 수정."
 }
 
-### 게시판 삭제
-DELETE http://localhost:8080/articles/2/delete
+### 댓글 삭제
+DELETE http://localhost:8080/articles/comment/4/delete

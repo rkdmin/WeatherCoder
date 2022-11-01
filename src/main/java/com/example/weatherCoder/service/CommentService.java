@@ -1,5 +1,7 @@
 package com.example.weatherCoder.service;
 
+import static com.example.weatherCoder.type.ErrorCode.*;
+
 import com.example.weatherCoder.dto.CommentDto;
 import com.example.weatherCoder.entity.Article;
 import com.example.weatherCoder.entity.Comment;
@@ -54,9 +56,9 @@ public class CommentService {
     public void edit(Long id, CommentDto commentDto) {
         commentDto.setId(id);// id 설정
         Comment comment = commentRepository.findById(id).orElseThrow(
-                () -> new CommentException(ErrorCode.INVALID_COMMENT_ID));// 1.요청한 id로 찾아본 데이터가 db에 없는 경우
+                () -> new CommentException(INVALID_COMMENT_ID));// 1.요청한 id로 찾아본 데이터가 db에 없는 경우
         if(id != commentDto.getId()){
-            throw new CommentException(ErrorCode.INVALID_COMMENT_ID);// 2. 요청한 id와 db속 id가 다른 경우
+            throw new CommentException(INVALID_COMMENT_ID);// 2. 요청한 id와 db속 id가 다른 경우
         }
 
         // 수정
@@ -67,27 +69,25 @@ public class CommentService {
 
     // 댓글삭제
     @Transactional
-    public CommentDto delete(Long id) {
+    public void delete(Long id) {
         // 조회 및 예외처리
-        Comment target = commentRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("댓글 삭제 실패! 댓글이 없습니다."));// db에 요청한 데이터가 없음
+        Comment comment = commentRepository.findById(id).orElseThrow(
+                () -> new CommentException(COMMENT_EMPTY));// db에 요청한 데이터가 없음
 
         // db 에서 삭제
-        commentRepository.delete(target);
-
-        return null;
+        commentRepository.delete(comment);
     }
 
     private static void createValidation(Long articleId, CommentDto commentDto,
         Optional<Article> optionalArticle) {
         if(!optionalArticle.isPresent()){
-            throw new CommentException(ErrorCode.INVALID_REQUEST);
+            throw new CommentException(INVALID_REQUEST);
         }
         if(commentDto.getId() != null){// 2. 댓글엔 id가 필요없는데 있다면
-            throw new CommentException(ErrorCode.EXIST_ID);
+            throw new CommentException(EXIST_ID);
         }
         if(articleId != optionalArticle.get().getId()){// 3. 요청된 id와 db에있는 article id가 다를 경우
-            throw new CommentException(ErrorCode.INVALID_ARTICLE_ID);
+            throw new CommentException(INVALID_ARTICLE_ID);
         }
     }
 }
