@@ -50,29 +50,23 @@ public class ArticleService {
     }
 
     // 수정
-    public ArticleDto edit(@RequestBody ArticleDto dto,
-                        @PathVariable Long id){
+    public void edit(@RequestBody ArticleDto dto, @PathVariable Long id){
+        // 1. 수정용 엔티티 생성
+        Article article = Article.toEntity(dto);
+        article.setId(id);// 수정할 게시물의 id 설정
 
-//        dto.setId(id);// 수정할 게시물의 id 설정
-//        // 1. 수정용 엔티티 생성
-//        Article articleEntity = Article.toEntity(dto);
-//        log.info("id:{}, article: {}", id, articleEntity.toString());
-//
-//        // 2. id로 DB에서 조회
-//        Article target = articleRepository.findById(id).orElse(null);
-//
-//        // 3. 잘못된 응답(대상이 없거나, id가 다른 경우 400)
-//        if(target == null || id != articleEntity.getId() ||
-//                (articleEntity.getTitle() == null && articleEntity.getContent() == null)){
-//            log.info("잘못된 요청! id:{}, article: {}", id, articleEntity.toString());
-//            return null;
-//        }
-//
-//        // 4. 잘된 응답(200)
-//        // 수정할 데이터에 title이나 content가 비어있을경우 원래 title과 content를 넣어준다.
-//        articleEntity.patch(articleEntity, target);
-//        return articleRepository.save(articleEntity);
-        return null;
+        // 2. id로 DB에서 조회
+        Article target = articleRepository.findById(id).orElse(null);
+
+        // 3. 잘못된 응답(대상이 없거나, id가 다른 경우 400)
+        if(target == null || id != article.getId() ||
+            (article.getTitle() == null && article.getContent() == null)){
+            throw new ArticleException(ErrorCode.INVALID_REQUEST);
+        }
+
+        // 수정할 데이터에 title이나 content가 비어있을경우 원래 title과 content를 넣어준다.
+        article.patch(article, target);
+        articleRepository.save(article);
     }
 
     // 삭제

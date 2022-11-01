@@ -35,7 +35,7 @@ Content-Type: application/json
   }
 - 회원가입이 완료되었습니다.
 
-### 회원 카테고리 등록
+### 회원 카테고리 등록 / 수정
 POST http://localhost:8080/my-clothes
 Content-Type: application/json
 
@@ -199,8 +199,8 @@ POST http://localhost:8080/articles/new
 Content-Type: application/json
 
 {  
-"title" : "두번째 게시글",  
-"content" : "두번째 게시글 입니다."  
+"title" : "?",  
+"content" : "?"  
 }  
 
 받는데이터
@@ -245,10 +245,28 @@ Accept: application/json
   "errorCode": "ARTICLE_EMPTY",
   "errorMessage": "게시글이 없습니다."
   }
-- - {
+- {
     "id": 2,
     "title": "게시글",
     "content": "게시글 입니다."
     }
+
+### 게시글 수정
+POST http://localhost:8080/articles/new  
+Content-Type: application/json
+
+{  
+"title" : "?",  
+"content" : "?"  
+}
+
+받는데이터
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "잘못된 요청입니다."
+  }
+- 게시글 수정이 완료되었습니다.
+
+
 
 

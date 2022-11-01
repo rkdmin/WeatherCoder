@@ -14,3 +14,12 @@ Content-Type: application/json
   "title": "게시글",
   "content": "게시글 입니다."
 }
+
+### 게시판 수정
+PATCH http://localhost:8080/articles/12/edit
+Content-Type: application/json
+
+{
+  "title": "게시글 수정",
+  "content": "게시글 수정 입니다."
+}

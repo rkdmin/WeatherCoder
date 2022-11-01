@@ -3,9 +3,10 @@ package com.example.weatherCoder.controller;
 import com.example.weatherCoder.dto.ArticleDto;
 import com.example.weatherCoder.entity.Article;
 import com.example.weatherCoder.exception.ArticleException;
-import com.example.weatherCoder.exception.MemberException;
 import com.example.weatherCoder.service.ArticleService;
 import com.example.weatherCoder.type.ErrorCode;
+import java.util.List;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,10 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.*;
-
-import javax.transaction.Transactional;
-import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -53,8 +57,7 @@ public class ArticleController {
 
     // PATCH
     @PatchMapping("/articles/{id}/edit")
-    public String edit(@RequestBody ArticleDto dto, BindingResult bindingResult,
-                        @PathVariable Long id){
+    public String edit(@RequestBody ArticleDto dto, @PathVariable Long id){
 
         articleService.edit(dto, id);
 
