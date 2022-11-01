@@ -252,7 +252,7 @@ Accept: application/json
     }
 
 ### 게시글 수정
-POST http://localhost:8080/articles/new  
+PATCH http://localhost:8080/articles/{id}/edit 
 Content-Type: application/json
 
 {  
@@ -266,6 +266,16 @@ Content-Type: application/json
   "errorMessage": "잘못된 요청입니다."
   }
 - 게시글 수정이 완료되었습니다.
+
+### 게시글 삭제
+DELETE http://localhost:8080/articles/{id}/delete
+
+받는데이터
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "잘못된 요청입니다."
+  }
+- 게시글 삭제가 완료되었습니다.
 
 
 

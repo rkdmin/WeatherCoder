@@ -66,21 +66,10 @@ public class ArticleController {
 
     // DELETE
     @DeleteMapping("/articles/{id}/delete")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        Article deleted = articleService.delete(id);
+    public String delete(@PathVariable Long id){
+        articleService.delete(id);
 
-        return (deleted != null) ?
-                ResponseEntity.status(HttpStatus.NO_CONTENT).build():
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
-
-    // 트랜잭션 -> 실패 -> 롤백!
-    @PostMapping("/transaction-test")
-    public ResponseEntity<List<Article>> transactionTest(@RequestBody List<ArticleDto> dtos){
-        List<Article> createdList = articleService.createArticles(dtos);
-        return (createdList != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(createdList):
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return "게시글 삭제가 완료되었습니다.";
     }
 
     private static void validation(BindingResult bindingResult) {

@@ -70,18 +70,16 @@ public class ArticleService {
     }
 
     // 삭제
-    public Article delete(@PathVariable Long id){
-        // 1. 데이터 조회
-        Article target = articleRepository.findById(id).orElse(null);
+    public void delete(@PathVariable Long id){
+        Optional<Article> optionalArticle = articleRepository.findById(id);
 
-        // 2. 잘못된 요청(값이없는경우 400)
-        if(target == null){
-            return null;
+        // 값이 없는 경우
+        if(!optionalArticle.isPresent()){
+            throw new ArticleException(ErrorCode.INVALID_REQUEST);
         }
 
         // 3. 잘 된 요청
-        articleRepository.delete(target);
-        return target;
+        articleRepository.delete(optionalArticle.get());
     }
 
     // transactionTest

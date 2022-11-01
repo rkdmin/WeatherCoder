@@ -23,3 +23,6 @@ Content-Type: application/json
   "title": "게시글 수정",
   "content": "게시글 수정 입니다."
 }
+
+### 게시판 삭제
+DELETE http://localhost:8080/articles/2/delete
