@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@Builder
 public class Comment {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -20,15 +20,18 @@ public class Comment {
     @JoinColumn(name = "article_id")// Article 내의 article_id란 외부키 설정
     private Article article;
 
-    @Column
     private String nickname;
 
-    @Column
     private String body;
 
     // entity -> dto
-    public CommentDto toDto() {
-        return new CommentDto(id, article.getId(), nickname, body);
+    public static Comment toEntity(CommentDto commentDto, Article article) {
+        return Comment.builder()
+            .id(commentDto.getId())
+            .nickname(commentDto.getNickname())
+            .article(article)
+            .body(commentDto.getBody())
+            .build();
     }
 
     public void patch(CommentDto commentDto) {

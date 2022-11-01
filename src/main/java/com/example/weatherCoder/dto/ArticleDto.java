@@ -14,6 +14,7 @@ import lombok.*;
 @Builder
 public class ArticleDto {
     private Long id;
+
     @NotBlank(message = "제목이 없습니다.")
     private String title;
 

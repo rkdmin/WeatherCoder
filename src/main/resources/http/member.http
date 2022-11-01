@@ -20,7 +20,3 @@ Content-Type: application/json
   "email": "22rkdmin@naver.cm",
   "styleList" : ["댄디", "놈코어"]
 }
-
-### get account
-GET http://localhost:8080/account/?user_id=1
-Accept: application/json

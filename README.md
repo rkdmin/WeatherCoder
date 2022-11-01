@@ -277,6 +277,34 @@ DELETE http://localhost:8080/articles/{id}/delete
   }
 - 게시글 삭제가 완료되었습니다.
 
+### 댓글 작성
+POST http://localhost:8080/articles/{article_id}/new  
+Content-Type: application/json
+
+{  
+"title" : "?",  
+"content" : "?"  
+}
+
+받는데이터
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "잘못된 요청입니다."
+  }
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "내용이 없습니다."
+  }
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "닉네임이 없습니다."
+  }
+- {
+  "errorCode": "EXIST_ID",
+  "errorMessage": "고유번호가 존재하면 안됩니다."
+  }
+- 댓글 작성이 완료되었습니다.
+
 
 
 

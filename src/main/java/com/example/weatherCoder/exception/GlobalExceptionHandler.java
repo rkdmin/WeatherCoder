@@ -28,6 +28,14 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
     }
 
+    @ExceptionHandler(CommentException.class)
+    public ErrorResponse handelArticleException(CommentException e){
+        log.error("{} is occurred", e.getErrorMassage());
+
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMassage());
+    }
+
+
     @ExceptionHandler(MemberException.class)
     public ErrorResponse handelMemberException(MemberException e){
         log.error("{} is occurred", e.getErrorMassage());
