@@ -1,12 +1,17 @@
 package com.example.weatherCoder.service;
 
-import com.example.weatherCoder.aop.MailComponents;
+import com.example.weatherCoder.components.MailComponents;
 import com.example.weatherCoder.dto.MemberDto;
 import com.example.weatherCoder.entity.Member;
+import com.example.weatherCoder.entity.MemberStyle;
 import com.example.weatherCoder.exception.MemberException;
 import com.example.weatherCoder.repository.MemberRepository;
+import com.example.weatherCoder.repository.MemberStyleRepository;
 import com.example.weatherCoder.security.SHA256;
+import com.example.weatherCoder.type.ErrorCode;
 import com.example.weatherCoder.type.MemberStatus;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
+import org.springframework.util.StringUtils;
 
 import static com.example.weatherCoder.type.ErrorCode.ALREADY_EXISTS_EMAIL;
 import static com.example.weatherCoder.type.ErrorCode.INVALID_EMAIL_KEY;
@@ -25,6 +31,7 @@ import static com.example.weatherCoder.type.ErrorCode.INVALID_EMAIL_KEY;
 public class MemberService{
     private final MemberRepository memberRepository;
     private final MailComponents mailComponents;
+    private final MemberStyleRepository memberStyleRepository;
 
     private final MemberStyleService memberStyleService;
 
@@ -89,28 +96,30 @@ public class MemberService{
         }
     }
 
-//    // 로그인
-//    public MemberDto login(String userId, String password) throws NoSuchAlgorithmException{
-//        // 비밀번호 암호화
-//        SHA256 sha256 = new SHA256();
-//        String secPassword = sha256.encrypt(password);// 불러온 비밀번호 암호화
-//
-//        //  로그인 및 예외 처리
-//        // 1. 존재하지 회원정보
-//        Member member = memberRepository.loginProcess(userId, secPassword);
-//        if(member == null){
-//            throw new IllegalArgumentException("로그인 실패! : 존재하지 않는 회원정보입니다.");
-//        }
-//        // 2. 입력된 아이디나, 패스워드가 존재하지 않는경우
-//        if(userId == null || password == null || userId.equals("") || password.equals("")){
-//            throw new IllegalArgumentException("로그인 실패! : 아이디나 비밀번호를 입력해주세요.");
-//        }
-//
-//        // dto -> entity
-//        MemberDto memberDto = member.toDto();
-//
-//        return memberDto;
-//    }
+    // 로그인
+    public MemberDto.Response login(String email, String password) throws NoSuchAlgorithmException {
+        //  로그인 및 예외 처리
+        // 1. 입력된 아이디나, 패스워드가 존재하지 않는경우
+        if(!StringUtils.hasText(email) || !StringUtils.hasText(password)){
+            throw new MemberException(ErrorCode.MEMBER_EMPTY, "이메일 또는 패스워드ads가 일치하지 않습니다.");
+        }
+        // 비밀번호 암호화
+        SHA256 sha256 = new SHA256();
+        String secPassword = sha256.encrypt(password);// 불러온 비밀번호 암호화
+        // 2. 존재하지 회원정보
+        Member member = memberRepository.findByEmailAndPassword(email, secPassword).orElseThrow(
+            () -> new MemberException(ErrorCode.MEMBER_EMPTY, "이메일 또는 패스워드가 일치하지 않습니다.")
+        );
+
+        // 회원의 스타일 가져오기
+        List<MemberStyle> memberStyleList = memberStyleRepository.findAllByMember_Email(email);
+        List<String> styleList = new ArrayList<>();
+        for(MemberStyle memberStyle: memberStyleList){
+            styleList.add(memberStyle.getStyle().getStyleName());
+        }
+
+        return MemberDto.Response.toDto(member, styleList);
+    }
 //
 //    // 아이디 찾기
 //    public MemberDto findUserId(String email) throws NoSuchAlgorithmException{

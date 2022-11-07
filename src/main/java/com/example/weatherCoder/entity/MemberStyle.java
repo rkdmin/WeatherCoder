@@ -1,4 +1,5 @@
 package com.example.weatherCoder.entity;
+import java.util.List;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,4 +22,5 @@ public class MemberStyle {
     @ManyToOne
     @JoinColumn(name = "style_name")
     private Style style;
+
 }

@@ -1,0 +1,55 @@
+.InfoToWeather_gubun{
+    background: #FFFFFF;
+    border: 2px solid #4254FF;
+    border-radius: 34px;
+    display: flex;
+    margin: 10px auto 0 auto;
+    /*height: 27.93px;*/
+    width: 295px;
+    padding: 1px;
+}
+.InfoToWeather_gubun_radiobtn_active{
+    background: #4254FF;
+    border-radius: 100px;
+    width: 149px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.InfoToWeather_gubun_radiobtn_text_active{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height, or 129% */
+
+    text-align: center;
+    letter-spacing: -0.084px;
+
+    color: #FFFFFF;
+}
+.InfoToWeather_gubun_radiobtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+}
+.InfoToWeather_gubun_radiobtn_text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    /* identical to box height, or 138% */
+
+    text-align: center;
+    letter-spacing: -0.078px;
+
+    color: #4254FF;
+}
+.InfoToWeather_card_container{
+    height: calc( 100% - 103px);
+    padding-top: 5px;
+}

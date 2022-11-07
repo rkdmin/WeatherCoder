@@ -3,13 +3,21 @@ POST http://localhost:8080/join
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@2naver.cm21213",
+  "email": "22rkdmin@2naver.cm",
   "password": "a12345678!",
   "gender" : "여성",
   "age": 2,
   "height": 3,
   "weight" : 2,
   "styleList" : ["댄디", "캐주얼", "놈코어"]
+}
+
+### 로그인
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "email": "22rkdmin@2naver.cm"
 }
 
 ### 회원 스타일 수정

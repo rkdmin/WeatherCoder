@@ -16,8 +16,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     // 이메일 키 찾기
     Optional<Member> findByEmailKey(String emailKey);
 
-//    // 로그인 프로세스
-//    @Query(value = "SELECT m FROM Member m WHERE m.userId = :userId AND " +
-//            "m.password = :secPassword", nativeQuery = true)
-//    Member loginProcess(String userId, String secPassword);
+    // 로그인 프로세스
+    Optional<Member> findByEmailAndPassword(String userId, String secPassword);
 }

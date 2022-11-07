@@ -1,4 +1,4 @@
-package com.example.weatherCoder.aop;
+package com.example.weatherCoder.components;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;

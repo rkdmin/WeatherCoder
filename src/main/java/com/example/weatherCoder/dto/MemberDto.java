@@ -1,5 +1,8 @@
 package com.example.weatherCoder.dto;
 
+import com.example.weatherCoder.entity.Member;
+import com.example.weatherCoder.entity.MemberStyle;
+import java.time.LocalDateTime;
 import lombok.*;
 
 import javax.validation.constraints.*;
@@ -34,5 +37,32 @@ public class MemberDto {
 
         @NotNull(message = "스타일을 선택하세요.")
         private List<String> styleList;
+    }
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Getter
+    @Setter
+    @Builder
+    public static class Response{
+        private String email;// 이메일
+        private String gender;// "남성" 혹은 "여성"
+        private Integer age;// 1, 2, 3, 4, 5
+        private Integer height;// 1, 2, 3, 4, 5
+        private Integer weight;// 1, 2, 3, 4, 5
+        private List<String> styleList;
+        private LocalDateTime regDt;
+
+        public static Response toDto(Member member, List<String> styleList) {
+            return Response.builder()
+                .email(member.getEmail())
+                .gender(member.getGender())
+                .age(member.getAge())
+                .height(member.getHeight())
+                .weight(member.getWeight())
+                .styleList(styleList)
+                .regDt(member.getRegDate())
+                .build();
+        }
     }
 }

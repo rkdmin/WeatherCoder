@@ -35,6 +35,34 @@ Content-Type: application/json
   }
 - 회원가입이 완료되었습니다.
 
+### 로그인
+POST http://localhost:8080/login  
+Content-Type: application/json
+
+{  
+"email": "22rkdmin@2naver.cm",  
+"password": "a12345678!"  
+}    
+
+받는데이터
+- {
+  "errorCode": "MEMBER_EMPTY",
+  "errorMessage": "이메일 또는 패스워드가 일치하지 않습니다."
+  }
+- {
+  "email": "?",
+  "gender": "?",
+  "age": ?,
+  "height": ?,
+  "weight": ?,
+  "styleList": [
+  "?",
+  "?",
+  "?"
+  ],
+  "regDt": "?"
+  }  
+
 ### 회원 카테고리 등록 / 수정    
 POST http://localhost:8080/my-clothes   
 Content-Type: application/json
