@@ -61,7 +61,7 @@ Content-Type: application/json
   "?"
   ],
   "regDt": "?"
-  }  
+  }
 
 ### 회원 카테고리 등록 / 수정    
 POST http://localhost:8080/my-clothes   

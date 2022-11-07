@@ -101,7 +101,7 @@ public class MemberService{
         //  로그인 및 예외 처리
         // 1. 입력된 아이디나, 패스워드가 존재하지 않는경우
         if(!StringUtils.hasText(email) || !StringUtils.hasText(password)){
-            throw new MemberException(ErrorCode.MEMBER_EMPTY, "이메일 또는 패스워드ads가 일치하지 않습니다.");
+            throw new MemberException(ErrorCode.MEMBER_EMPTY, "이메일 또는 패스워드가 일치하지 않습니다.");
         }
         // 비밀번호 암호화
         SHA256 sha256 = new SHA256();
