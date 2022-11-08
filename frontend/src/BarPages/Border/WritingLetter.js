@@ -38,7 +38,7 @@ typeof(chanArticle)==="string"?alert(chanArticle):null}
     (async()=>{
         try {
             e.preventDefault()
-            const modContentList = new articles(modText,modContent)
+            const modContentList = new articles(modText.current.value,modContent.current.value)
             setContet(await(await axios.patch(`/articles/${parms.id}/edit`,modContentList)).data)
             setModi(true)
             navigate(0)
@@ -48,6 +48,5 @@ typeof(chanArticle)==="string"?alert(chanArticle):null}
     <textarea rows="15" ref={modContent} cols="60" defaultValue={body}/>
     <br/>
     <input type = "submit"/>
-</form>
-</>}</>)}
+</form></>}</>)}
 export default WritingLetter

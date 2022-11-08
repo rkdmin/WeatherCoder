@@ -8,20 +8,18 @@ import com.example.weatherCoder.service.MemberCategoryService;
 import com.example.weatherCoder.service.MemberService;
 import com.example.weatherCoder.service.MemberStyleService;
 import com.example.weatherCoder.type.ErrorCode;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

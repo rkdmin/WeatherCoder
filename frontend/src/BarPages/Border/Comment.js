@@ -43,9 +43,8 @@ return(<>
 <form onSubmit={e=>{
     (async()=>{try {
         e.preventDefault()
-        const creContent = new content(Date.now(),creRef.current.value)
-        setMessage(await(await axios.post(`articles/${parms.id}/new`,creContent)).data)
-        navigate(0)
+        setMessage(await(await axios.post(`articles/${parms.id}/new`,{content:creRef.current.value})).data)
+        navigate(0)//협의필요
     }catch(error){console.log(error)}})()}}>
     <textarea placeholder="댓글을 작성해 보세요." ref = {creRef} rows="5" cols="80"/> 
     <input type = "submit" value = "작성 하기"/>

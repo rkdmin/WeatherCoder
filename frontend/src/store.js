@@ -1,4 +1,4 @@
-import {configureStore,createSlice} from "@reduxjs/toolkit"
+import {configureStore,createSlice, current} from "@reduxjs/toolkit"
 
 const registration = createSlice({
     name:"registration",

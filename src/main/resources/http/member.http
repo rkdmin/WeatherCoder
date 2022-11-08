@@ -17,7 +17,8 @@ POST http://localhost:8080/login
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@2naver.cm"
+  "email": "22rkdmin@2naver.cm",
+  "password": "a12345678!"
 }
 
 ### 회원 스타일 수정

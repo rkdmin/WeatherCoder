@@ -24,10 +24,10 @@ const Category = ({text,type,link,index}) => {
   const navigate = useNavigate()
   const selectData = Object.keys(addStyleList[index])
   const userIn = Object.keys(type)
-  const [message,setMessage] = useState(null)
+  const [message,setMessage] = useState({})
   useEffect(()=>{dispatch(clearStyle(index))},[dispatch,index])
   return (<>
-    {Object.keys(message).lengyh===2 ?alert(message.errorMessage):null}
+  {Object.keys(message).lengyh===2 ?alert(message.errorMessage):null}
   <h3>{text}</h3>
 <form onSubmit = {e=>
 {(async()=>{
