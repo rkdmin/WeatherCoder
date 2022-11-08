@@ -1,6 +1,7 @@
 package com.example.weatherCoder.controller;
 
 import com.example.weatherCoder.dto.CategoryParam;
+import com.example.weatherCoder.dto.ChangePasswordRequest;
 import com.example.weatherCoder.dto.MemberDto;
 import com.example.weatherCoder.dto.StyleParam;
 import com.example.weatherCoder.exception.MemberException;
@@ -70,6 +71,18 @@ public class MemberController {
         memberStyleService.update(request);
 
         return "스타일 수정이 완료되었습니다.";
+    }
+
+    @PostMapping("/change-password")
+    public String changePassword(@RequestBody @Valid ChangePasswordRequest request,
+        BindingResult bindingResult) throws NoSuchAlgorithmException {
+
+        // @valid 발생
+        validation(bindingResult);
+
+        memberService.changePassword(request);
+
+        return "메일 전송이 완료되었습니다.";
     }
 
     private static void validation(BindingResult bindingResult) {

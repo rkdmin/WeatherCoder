@@ -36,6 +36,9 @@ public class Member {
     private int height;// 1, 2, 3, 4, 5
     private int weight;// 1, 2, 3, 4, 5
 
+    // 비밀번호 변경
+    private String passwordKey;
+
     public static Member toEntity(MemberDto.Request request){
         return Member.builder()
                 .email(request.getEmail())

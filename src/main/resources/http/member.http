@@ -3,7 +3,7 @@ POST http://localhost:8080/join
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@2naver.cm",
+  "email": "22rkdmin@naver.com",
   "password": "a12345678!",
   "gender" : "여성",
   "age": 2,
@@ -17,7 +17,7 @@ POST http://localhost:8080/login
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@2naver.cm",
+  "email": "22rkdmin@naver.com",
   "password": "a12345678!"
 }
 
@@ -28,4 +28,14 @@ Content-Type: application/json
 {
   "email": "22rkdmin@naver.cm",
   "styleList" : ["댄디", "놈코어"]
+}
+
+### 비밀번호 변경
+POST http://localhost:8080/change-password
+Content-Type: application/json
+
+{
+  "email": "22rkdmin@naver.com",
+  "password": "a12345678!",
+  "newPassword": "a1234567!"
 }
