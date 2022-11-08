@@ -18,4 +18,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     // 로그인 프로세스
     Optional<Member> findByEmailAndPassword(String userId, String secPassword);
+
+    // 패스워드 키 찾기
+    Optional<Member> findByPasswordKey(String passwordKey);
 }

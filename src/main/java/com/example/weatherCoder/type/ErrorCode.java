@@ -20,7 +20,8 @@ public enum ErrorCode {
     ARTICLE_EMPTY("게시글이 없습니다."),
     COMMENT_EMPTY("댓글이 없습니다."),
     INVALID_ARTICLE_ID("잘못된 게시글 번호입니다."),
-    INVALID_COMMENT_ID("잘못된 댓글 번호입니다.")
+    INVALID_COMMENT_ID("잘못된 댓글 번호입니다."),
+    INVALID_PASSWORD_KEY("잘못된 패스워드 키 입니다.")
 
     ;
 

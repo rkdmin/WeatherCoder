@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
   "email": "22rkdmin@naver.com",
-  "password": "a12345678!"
+  "password": "a1234567!"
 }
 
 ### 회원 스타일 수정

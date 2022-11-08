@@ -85,6 +85,16 @@ public class MemberController {
         return "메일 전송이 완료되었습니다.";
     }
 
+    @GetMapping("/passwordCert")
+    public String passwordCert(HttpServletRequest request){
+        String passwordKey = request.getParameter("key");
+        String newSecPassword = request.getParameter("pa");
+
+        memberService.passwordCert(passwordKey, newSecPassword);
+
+        return "비밀번호 변경이 완료되었습니다.";
+    }
+
     private static void validation(BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             List<FieldError> list = bindingResult.getFieldErrors();

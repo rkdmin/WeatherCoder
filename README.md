@@ -123,6 +123,27 @@ Content-Type: application/json
   }
 - 스타일 수정이 완료되었습니다.
 
+### 회원 비밀번호 변경
+POST http://localhost:8080/change-password  
+Content-Type: application/json
+
+{      
+"email" : "?",  
+"password" : "?",  
+"newPassword" : "?"  
+}
+
+받는데이터
+- {
+  "errorCode": "MEMBER_EMPTY",
+  "errorMessage": "패스워드가 일치하지 않습니다."
+  }  
+- {
+  "errorCode": "INVALID_REQUEST",
+  "errorMessage": "비밀번호는 영어, 숫자, 특수문자 포함해서 8~16자리 이내로 입력해주세요."
+  } 
+- 이메일 전송이 완료되었습니다.  
+
 
 
 ## 옷추천 기능 
