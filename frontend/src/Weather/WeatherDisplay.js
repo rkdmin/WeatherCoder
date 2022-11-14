@@ -21,3 +21,5 @@ export default function Display({humidity,temp,weather,dt}){
      <h1 >{description}</h1>
      </div>)})}
      <br/></>:null}</>)}
+
+     //한다은

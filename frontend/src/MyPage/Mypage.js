@@ -19,3 +19,4 @@ navi(0)}}>로그아웃</span> </>:<>
         navi(`/My_page/Correction`):alert("로그인후 이용이 가능한 서비스 입니다.")}>내정보 수정하기</h1>
 <h1>Weather Coder</h1></>)}
 export default Mypage
+//한다은

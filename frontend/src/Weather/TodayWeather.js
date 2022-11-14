@@ -35,7 +35,6 @@ const TodayWeather = ({latitude,longitude}) =>{
     const [highTemp,setHighTemp] = useState(0) 
     const [pageLoading,setPageLoading] = useState(true)
     const [isPending,startTransition] = useTransition()
-
      useMemo(()=>{
         try{
             startTransition(
@@ -60,3 +59,4 @@ const TodayWeather = ({latitude,longitude}) =>{
         return<WeatherDisplay key={item.dt} {...item} />})}
         <WeatherAlgorithm htemp = {highTemp} ltemp={lowTemp} rain={rainData}/></>}</>)}
         export default React.memo(TodayWeather)
+        //한다은

@@ -20,11 +20,8 @@ const Login_page = () => {
     {alert(result.errorMessage)}
     else if (Object.keys(result).length===7){
     sessionStorage.setItem("login_information",JSON.stringify(result))
-    window.history.back()
-    navigate(0)
-    }
-    else return;
-  },[result,navigate])
+    // window.history.back()
+    navigate(0)}},[result,navigate])
 return (<>
     <h1> Log-in </h1>
             <form onSubmit={e=>{
@@ -39,3 +36,4 @@ return (<>
               <input type="submit" className ="in" value="LOGIN"/><br/><br/>
             </form><Link to={'/Id_find'}>아이디</Link> 찾기</>)}
 export default Login_page
+//한다은

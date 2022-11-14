@@ -6,3 +6,5 @@ return(<><h2 onClick = {()=>navigate('/')} style = {{display:"inline-block"}}>We
     {location.pathname==="/My_page"?null:<Link to = {`/My_page`}>마이 페이지</Link>}
     <br/></>)}
 export default Header 
+
+//한다은

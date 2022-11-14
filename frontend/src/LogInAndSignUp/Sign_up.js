@@ -13,7 +13,7 @@ return(<div key={rest[3]}><h3 style = {{"marginBottom":"0px"}}>{rest[1]}</h3>
 {rest[0].map((childInformation,index)=>{
 return (<div key = {index}>{childInformation}
 <input type ="radio"name={rest[1]} value = {
-  childInformation==="남성"||childInformation==="여성"?childInformation:index
+  childInformation==="남성"||childInformation==="여성"?childInformation:index+1
 } onClick ={(e)=>
   {
     if(!rest[2].length){rest[2].push(e.target.value)}
@@ -28,7 +28,7 @@ const userInFormationCheckBox = (...rest) =>{
   {rest[1].map((clothing,index)=>{
   return (<div key = {index}>{clothing}<input type ="checkbox" 
   value = {clothing} onClick ={e=>
-    {if(e.target.checked===true){
+    {if(e.target.checked){
      rest[2].push(e.target.value)  
     rest[2].filter((element,index)=>rest[2].indexOf(element)===index)}
       else{rest[2].splice(rest[2].indexOf(e.target.value),1)}
@@ -47,13 +47,11 @@ export default function Sign_Up (){
 useEffect(()=>{ 
   if(Object.keys(result).length===2)
   {alert(result.errorMessage)}
-  else if (Object.keys(result).length===1){
+  else if (typeof(result)==="string"){
   alert(result)
-  window.history.back()
-  trans(0)
-  }
+  window.history.back()}
   else return;
-},[result,trans])
+},[result])
 return(<>
   <h1>회원가입</h1>
   <form onSubmit={e=>{
@@ -65,9 +63,7 @@ return(<>
   try{  
   setResult(await(await axios.post('/join',signIn)).data)
   }
-  catch(e){console.log(e)}
-  console.log(signIn)
-  })()}}>
+  catch(e){console.log(e)}})()}}>
   {userSetting.map((item,index)=>userInFormationInput(inputTypeAndPalcehorder[userSetting[index]][0],item,userClientInput[item],index))}
   {basicSetting.map((item,index)=>userInFormationRadio(selectUserData[item],item,userSelect[item],index))}
   {styleObject.map((item,index)=>userInFormationCheckBox(item,selectUserCheck[item],userSelect[styleObject[0]],index))}

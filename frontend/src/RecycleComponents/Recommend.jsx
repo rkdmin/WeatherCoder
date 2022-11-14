@@ -1,33 +1,36 @@
 import axios from"axios"
-import React,{useState}from"react"
+import React,{useMemo, useState}from"react"
 import { useEffect } from "react"
-import {wheather,userLoginInfo,infotomyinfo2}from"../data"
-const implementsList = (img1,img2) => {
-return(<><div><h3>최저 온도</h3>
-<img src={img1}alt="이미지가 없습니다..."/>
-</div>
-<h3>최고 온도</h3>
-<img src={img2}alt="이미지가 없습니다..."/>
-</>)}
+import {wheather,userLoginInfo}from"../data"
+
+class ruby {
+    constructor(lowTemp,highTemp,email){
+        this.lowTemp = lowTemp
+        this.highTemp = highTemp
+        this.email = email
+    }}
 const Recommend = ({content,link}) => {
     const [pending,setPending] = useState(true)
     const [regist,setRegist] = useState({})
-    useEffect(()=>{},[])
+    useMemo(()=>{
+        (async()=>{
+            const rubyLan = new ruby(wheather.ltemp,wheather.htemp,userLoginInfo.email)
+            setRegist(await(await axios.post(link,rubyLan)).data)})()},[link])
+    useEffect(()=>{
+        if(Object.keys(regist).length === 2 || Object.keys(regist).length === 1){
+            setPending(false)}},[regist])
 return(<>
 <h1>{content}</h1>
 {wheather.rain?<h4>외출시 우산을 챙기세요</h4>:null}
-{
-pending?<form onSubmit={e=>{
-    (async()=>{
-        e.preventDefault()
-        try{
-            const clothMember = new infotomyinfo2(wheather.ltemp,wheather.htemp,userLoginInfo.email)
-              setRegist(await(await axios.post(link,clothMember)).data)
-           setPending(false)
-        }catch(e){console.log(e)}})()}}>
-    <input type = "submit" value = "추천 받기"/>
-</form>:
-Object.keys(regist).length===1?
-implementsList(regist?.clothesList[0],regist?.clothesList[1]):
-alert(regist.errorMessage)}</>)}
+{pending?<h3>loading...</h3>
+:
+Object.keys(regist).length === 1 ?
+<div>
+<h4> 최저 온도 </h4>    
+<img src = {regist.clothesList[0]} alt="이미지를 불러오는데 실패했습니다..."/>
+<h4> 최고 온도 </h4>
+<img src = {regist.clothesList[1]} alt="이미지를 불러오는데 실패했습니다..."/>
+</div> : Object.keys(regist).length === 2 ? 
+<h4>{regist.errorMessage}</h4>:
+<h4> error</h4>}</>)}
 export default React.memo(Recommend)

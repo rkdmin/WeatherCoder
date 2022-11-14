@@ -17,4 +17,5 @@ return(
     <div key={id}>
     <h1>{main}</h1>
     </div>)})}</>)}
-export default React.memo(NowWeather)
+export default React.memo(NowWeather) 
+//한다은

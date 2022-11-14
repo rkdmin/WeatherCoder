@@ -2,8 +2,8 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useDispatch, useSelector} from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { userInfoRegistration, userLoginInfo} from "../data"
+import { useLocation, useNavigate } from "react-router-dom"
+import { userInfoRegistration, userLoginInfo,selectDataParse,userStyleRegistration} from "../data"
 import { addStyle,removeStyle,deduplicationStyle,clearStyle} from "../store"
 const userSeasonStyle = (...rest) =>{
 return(<><h3>{rest[0]}</h3>
@@ -22,25 +22,47 @@ const Category = ({text,type,link,index}) => {
   const {addStyleList} = selector
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
   const selectData = Object.keys(addStyleList[index])
   const userIn = Object.keys(type)
   const [message,setMessage] = useState({})
+  const [state,setState] = useState([])
   useEffect(()=>{dispatch(clearStyle(index))},[dispatch,index])
+  useEffect(()=>{if(Object.keys(message).length===2){
+      alert(message.errorMessage)
+    }
+    else if(typeof(message) === "string"){
+      alert(message)
+      navigate(-1)
+    }},[message,navigate])
+useEffect(()=>{
+(async()=>{
+  if(!!state.length){
+    const data = new userInfoRegistration(userLoginInfo.email,state)
+    setMessage(await(await axios.post(link,data)).data)}
+ else if(state.length>=5){
+  navigate(0)}})()},[state,navigate,link])
   return (<>
-  {Object.keys(message).lengyh===2 ?alert(message.errorMessage):null}
   <h3>{text}</h3>
 <form onSubmit = {e=>
 {(async()=>{
     e.preventDefault()
     try {
-      const userClothing = new userInfoRegistration(userLoginInfo.email,addStyleList[index])
-    setMessage(await(await axios.post(link,userClothing)).data)
-      navigate(-1)
+      if(location.pathname==="/My_page/StyleChange"){
+        const userClothing = new userStyleRegistration(userLoginInfo.email,addStyleList[index].style)
+        setMessage(await(await axios.post(link,userClothing)).data)
+      }
+      else{
+      for(const key in addStyleList[index]){
+        if(!!addStyleList[index][key].length){
+          const data = new selectDataParse(key,addStyleList[index][key])
+          setState(state=>[...state,data])
+        }}}
   } catch (error) {
     console.log(error)}})()}}>
-    {userIn.map((item,index)=>{
-      return <div key={index}>{
-    userSeasonStyle(userIn[index],type[item],selectData[index],dispatch,index)}
+    {userIn.map((item,num)=>{
+      return <div key={num}>{
+    userSeasonStyle(userIn[num],type[item],selectData[num],dispatch,index)}
     </div>})}
 <input type="submit" value = "click"/> 
   </form></>)}

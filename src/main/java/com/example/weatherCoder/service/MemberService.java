@@ -23,9 +23,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 import org.springframework.util.StringUtils;
 
-import static com.example.weatherCoder.type.ErrorCode.*;
 import static com.example.weatherCoder.type.ErrorCode.ALREADY_EXISTS_EMAIL;
 import static com.example.weatherCoder.type.ErrorCode.INVALID_EMAIL_KEY;
+import static com.example.weatherCoder.type.ErrorCode.INVALID_PASSWORD_KEY;
+import static com.example.weatherCoder.type.ErrorCode.MEMBER_EMPTY;
 
 @Service
 @Slf4j
@@ -37,6 +38,7 @@ public class MemberService{
     private final MemberStyleRepository memberStyleRepository;
 
     private final MemberStyleService memberStyleService;
+
 
     /**
      * 회원가입
@@ -164,6 +166,7 @@ public class MemberService{
 
         return MemberDto.Response.toDto(member, styleList);
     }
+
 
     /**
      * 비밀번호 변경

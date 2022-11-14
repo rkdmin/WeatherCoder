@@ -38,10 +38,10 @@ return(
 <Route path="/detail/write" element={<Write/>}/>
 <Route path="/My_page" element={<Mypage/>}/>
 <Route path="/Recommendation/weather" element={<InfoToWeather/>}/>
-<Route path="/" element={<LogoWithMainPage setWait = {setWait}/>}/>
+<Route path="/" element={<LogoWithMainPage setWait={setWait}/>}/>
 <Route path="/Id_find" element={!!login?<LogoWithMainPage/>:<IdFind/>}/>
 <Route path="/Sign_up" element={!!login?<LogoWithMainPage/>:<Sign_up/>}/>
-<Route path="/Login" element={!!login?<LogoWithMainPage/>:<Login_page/>}/>
+<Route path="/Login" element={!!login?<Mypage/>:<Login_page/>}/>
 <Route path="/My_page/Correction" element={!!login?<CorrectionPage/>:<Login_page/>}/>
 <Route path="/Input_clothing" element={!!login?<MyClothing/>:<Login_page/>}/>
 <Route path="/Recommendation/Information" element={!!login?<InfoToMyInfo/>:<Login_page/>}/>

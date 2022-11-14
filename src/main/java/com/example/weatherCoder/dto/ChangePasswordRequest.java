@@ -1,11 +1,7 @@
 package com.example.weatherCoder.dto;
 
-import com.example.weatherCoder.entity.Member;
-import java.time.LocalDateTime;
-import java.util.List;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -46,7 +46,7 @@ return(<>
  <div>
  {result?<div>loading...</div>:
 Object.keys(regis).length===2?alert(regis.errorMessage):
-<><div>최저온도 <br/> <img src={regis.clothesList[0]}/></div><br/>
-<div>최고온도 <br/>  <img src={regis.clothesList[1]}/></div>
+<><div>최저온도 <br/> <img src={regis.clothesList[0]} alt="이미지를 불러오는데 실패했습니다..."/></div><br/>
+<div>최고온도 <br/>  <img src={regis.clothesList[1]} alt="이미지를 불러오는데 실패했습니다..."/></div>
 </>}</div></>)}
 export default InfoToWeather

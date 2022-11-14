@@ -1,28 +1,32 @@
 import axios from "axios"
+import { useMemo } from "react"
 import { useEffect, useRef, useState } from "react"
 import { Outlet, useNavigate, useParams } from "react-router-dom"
-import { articles } from "../../data"
+import { listText } from "../../data"
 
 const WritingLetter = () => {
     const parms = useParams()
-    const [content,setContet] = useState({})
+    const [contentOb,setContetOb] = useState({})
     const [chanArticle,setChanArticle] =useState({})
     const [modi,setModi] = useState(true)
     const [modText,modContent]  = [useRef(),useRef()] 
     const navigate= useNavigate()
-    useEffect(()=>{
+    useMemo(()=>{
         (async()=>{
             try {
-    setContet(await(await axios(`/articles/${parms.id}`)).data)  
+    setContetOb(await(await axios(`/articles/${parms.id}`)).data)  
             } catch(error){console.log(error)}})()},[parms])
+            useEffect(()=>{
+                if(Object.keys(chanArticle).length === 2) {
+                    alert(chanArticle.errorMessage)}
+                else if (typeof(chanArticle)==="string"){
+                    if(!alert(chanArticle))navigate(`/border/route/0`)}},[chanArticle,navigate])
+const {title,content} = contentOb
 
-const {title,body} = content
 return(<>
-{typeof(chanArticle)==="object"?alert(chanArticle.errorMessage):
-typeof(chanArticle)==="string"?alert(chanArticle):null}
 {modi?<>
     <h1>{title}</h1>
-<h3>{body}</h3>
+<h3>{content}</h3>
 <span onClick = {async()=>{
     setChanArticle(await(await axios.delete(`/articles/${parms.id}/delete`)).data)
     }}>삭제 하기</span>
@@ -38,14 +42,14 @@ typeof(chanArticle)==="string"?alert(chanArticle):null}
     (async()=>{
         try {
             e.preventDefault()
-            const modContentList = new articles(modText.current.value,modContent.current.value)
-            setContet(await(await axios.patch(`/articles/${parms.id}/edit`,modContentList)).data)
+            const modContentList = new listText(modText.current.value,modContent.current.value)
+            setChanArticle(await(await axios.patch(`/articles/${parms.id}/edit`,modContentList)).data)
             setModi(true)
             navigate(0)
         } catch (error) {console.log(error)}})()}}>
     <input type="text" ref={modText} defaultValue={title}/>
     <br/>
-    <textarea rows="15" ref={modContent} cols="60" defaultValue={body}/>
+    <textarea rows="15" ref={modContent} cols="60" defaultValue={content}/>
     <br/>
     <input type = "submit"/>
 </form></>}</>)}

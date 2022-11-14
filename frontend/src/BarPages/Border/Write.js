@@ -1,17 +1,28 @@
 import axios from "axios"
+import { useEffect } from "react"
 import { useRef,useState } from "react"
-import { articles } from "../../data"
+import { useNavigate } from "react-router-dom"
+import { listText } from "../../data"
 
 const Write = () => {
     const [titArticle,conArticle] = [useRef(),useRef()]
     const [artMsg,setArtMsg] = useState(undefined)
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(typeof(artMsg)==="object"){
+            alert(artMsg.errorMessage)
+        }
+        else if(typeof(artMsg)==="string"){
+            alert(artMsg)
+            navigate(-1)
+        }
+        else return
+    })
     return(<>
-    {typeof(artMsg)==="object"?alert(artMsg.errorMessage):
-    typeof(artMsg)==="string"?alert(artMsg):null}
     <h2>게시글 작성하기</h2>
     <form onSubmit={e=>{(async()=>{
         try {
-        const article = new articles(titArticle.current.value,conArticle.current.value)
+        const article = new listText(titArticle.current.value,conArticle.current.value)
         e.preventDefault()
         setArtMsg(await(await axios.post(`/articles/new`,article)).data)   
         } catch(error){console.log(error)}})()}}>
