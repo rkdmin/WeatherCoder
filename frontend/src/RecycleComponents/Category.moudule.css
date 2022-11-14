@@ -1,0 +1,64 @@
+.list {
+    width:100vw;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center; 
+    justify-content: center;
+}
+.pareList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.listChild{
+    margin: 5px;
+}
+.child{
+    margin-top:30px;
+}
+.content_title_write{
+    margin-bottom: 10px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style:initial;
+    font-weight: 600;
+    color: #4254ff;
+}
+.btnBox{
+  width: 100vw;
+  margin:30px;
+  display: flex;
+  justify-content: center;
+}
+.ctgSubmit{
+font-size: 15px;
+font-family: "Inter";
+border-radius: 20px;
+padding: 10px;
+width: 65px;
+background-color: #4254ff;
+border: none;
+cursor: pointer;
+color: white;
+box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+}
+.clothText{
+       font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-style:inherit;
+        font-weight: 600;
+        font-size: 16px;
+        color:gray;
+        margin-left: 7px;
+}
+.marginBox6{
+    height:10vh;
+}
+.borderHR12{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 0px;
+    margin-top : 20px;
+}
+.defaultText{
+    margin:10px;
+}
+

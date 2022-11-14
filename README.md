@@ -327,12 +327,12 @@ DELETE http://localhost:8080/articles/{id}/delete
 - 게시글 삭제가 완료되었습니다.
 
 ### 댓글 작성
-POST http://localhost:8080/articles/{article_id}/new  
+POST http://localhost:8080/articles/{article_id}/comments/new  
 Content-Type: application/json
 
 {  
-"title" : "?",  
-"content" : "?"  
+"nickname" : "?",  
+"body" : "?"  
 }
 
 받는데이터

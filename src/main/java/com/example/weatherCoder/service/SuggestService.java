@@ -183,7 +183,7 @@ public class SuggestService {
         // 해당 member의 category 모두 불러오기
         List<MemberCategory> memberCategoryList = memberCategoryRepository.findAllByMember_Email(email);
         if(memberCategoryList.size() == 0){
-            throw new SuggestException(CATEGORY_EMPTY);
+            throw new SuggestException(CATEGORY_EMPTY, "카테고리를 등록해 주세요");
         }
         Member member = memberCategoryList.get(0).getMember();// 회원 정보
 

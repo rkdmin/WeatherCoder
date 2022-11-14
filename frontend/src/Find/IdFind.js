@@ -14,7 +14,6 @@ export default function IdFind(){
 const [IdFind_state,setIdFind_State]=useState(true)
 const [id_value,setId_value] = useState("")
 const find_id_email=useRef()
-//beforeunload 이벤트 추가 필요
     return(
     <>{IdFind_state?<><h1>ID 찾기</h1><>
     <form onSubmit={e=>{e.preventDefault()
@@ -28,3 +27,5 @@ const find_id_email=useRef()
     <><h1>가입하신 아이디는 "{id_value}" 입니다.</h1>
     <h1>*주의*</h1><h3>뒤로가기나 새로고침시 초기화면으로 돌아 갑니다.</h3>
     </>}</>)}
+
+//삭제예정

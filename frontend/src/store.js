@@ -1,8 +1,8 @@
-import {configureStore,createSlice, current} from "@reduxjs/toolkit"
+import {configureStore,createSlice} from "@reduxjs/toolkit"
 
 const registration = createSlice({
     name:"registration",
-    initialState:[{spring:[],summer:[],fall:[],winter:[]},{style:[]}],
+    initialState:[{봄:[],여름:[],가을:[],겨울:[]},{style:[]}],
     reducers:{
         addStyle(state,action){
               state[action.payload.index][action.payload.list].push(action.payload.value)

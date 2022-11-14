@@ -1,0 +1,11 @@
+.TodayWeather_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 73px;
+}
+.marginBox{
+    height:15vh;
+}

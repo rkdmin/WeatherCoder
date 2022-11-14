@@ -39,7 +39,7 @@ public class MemberController {
 
         memberService.create(request);
 
-        return "회원가입이 완료되었습니다.";
+        return "이메일 전송이 완료되었습니다.";
     }
 
     @GetMapping("/email")
