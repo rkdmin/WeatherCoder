@@ -1,0 +1,140 @@
+.NowWeather_card {
+  width: calc(100vw - 40px);
+  height: 218px;
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  box-shadow: 2px 8px 20px -1px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+}
+.WeatherDisplay_container .NowWeather_card {
+  margin-top: 12px;
+}
+.NowWeather_top{
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+}
+.date{
+  font-weight: 500;
+  color:rgb(180, 179, 179);
+}
+.location{
+  font-weight: 900;
+  color:lightslategrey;
+}
+.borderHR12 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-bottom:15px;
+}
+
+.NowWeather_card_top {
+  margin-top: 12px;
+  width: 50px;
+  height: 25px;
+  background: rgba(65, 75, 90, 0.75);
+  border-radius: 15px;
+
+  line-height: 25px;
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  color: #ffffff;
+}
+.NowWeather_card_maincontainer {
+  width: 100%;
+  margin-top: 11px;
+  display: flex;
+  height: 78px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.NowWeather_card_mainleft,
+.NowWeather_card_mainright {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+}
+.NowWeather_card_maincenter {
+  width: 1px;
+  height: 53px;
+  background-color: #000;
+}
+.NowWeather_card_title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.NowWeather_card_title_top {
+  margin-bottom: 13px;
+}
+.NowWeather_card_degree {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 44px;
+  color: #414b5a;
+}
+.NowWeather_card_bottom {
+  display: flex;
+  width: 217px;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+}
+.NowWeather_card_bottom + .NowWeather_card_bottom {
+  border-top: 0.5px solid rgba(0, 0, 0, 0.5);
+}
+.NowWeather_card_bottom .NowWeather_card_title {
+  flex: 1;
+  margin-left: 10px;
+}
+.NowWeather_card_thumnail {
+  margin-left: 10px;
+}
+.NowWeather_card_title_value {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  width: 30px;
+}
+.headerPart{
+  display: flex;
+  justify-content: space-between;
+  width: 96vw;
+}
+.header_title{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 12px;
+  color:rgb(77, 75, 75);
+  margin-left: 10px;
+}
+.header_content{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 12px;
+  text-decoration: none;
+  color:#4254ff;
+}

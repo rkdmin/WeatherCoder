@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/weathercoder?serverTimezone=UTC&characterEncoding=UTF8
+    username: root
+    password: root
+  jpa:
+#    defer-datasource-initialization: true # true로하면 data.sql사용
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 22rkdmin@gmail.com
+    password: qchptkcrbowydfeh
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true

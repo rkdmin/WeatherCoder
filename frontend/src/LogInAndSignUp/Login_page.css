@@ -1,0 +1,94 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.loginpage_title{
+    height: 54px;
+    margin-top: 200px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 54px;
+
+    color: #4254FF;
+
+    text-shadow: 4px -2px 4px rgba(0, 0, 0, 0.1);
+}
+.form{
+    margin-top: 43px;
+    margin-bottom: 23px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.emailtext,.passwordtext{
+    height: 11px;
+    width: 228px;
+    padding-left: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 11px;
+    /* identical to box height */
+    color: #000000;
+    margin-bottom: 4px;
+}
+.ID,.PW{
+    width: 228px;
+    height: 27px;
+    padding: 10px;
+    background: rgba(196, 196, 196, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-bottom: 17px;
+    border:0 solid black;
+}
+.normaltext{
+    height: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+    /* identical to box height */
+    color: #000000;
+}
+.boldtext{
+    font-weight: 600;
+}
+.bcontainer{
+    display: flex;
+    margin-top: 5px;
+}
+.mh-10{
+    margin: 0 5px;
+}
+.in{
+    margin-top: 12px;
+    width: 228px;
+    height: 27px;
+    background: #4254FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: none;
+    color:white;
+}
+.submit{
+    width: 42px;
+    height: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    text-align: center;
+    color: #FFFFFF;
+}

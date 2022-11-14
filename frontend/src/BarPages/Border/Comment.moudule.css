@@ -1,0 +1,120 @@
+.commentContents {
+    /*글상세페이지_작성된_댓글내용*/
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.08);
+    border: none;
+    padding: 4px 4px 4px 15px;
+    border-radius: 20px;
+    margin-top: 25px;
+    margin-left: 10px;
+    width: 95%;
+    height: 35px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .commentTitle {
+    /*댓글 제목*/
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  .comment {
+    /*댓글내용*/
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.08);
+    border: none;
+    padding: 4px 4px 4px 15px;
+    border-radius: 20px;
+    margin-top: 25px;
+    margin-left: 10px;
+    width: 95%;
+    height: 35px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .borderHR171 {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .commentContentsPR {
+    display: flex;
+    margin-left: 15px;
+  }
+  .nickname {
+    /*댓글내용*/
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.08);
+    border: none;
+    padding: 10px 20px 4px 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    width: 95%;
+    height: 35px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .commentWriteTitle {
+    /*댓글 작성하기*/
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style:inherit;
+    font-weight: 600;
+    font-size: 20px;
+    color:rgb(69, 69, 69);
+  }
+  
+  .commentField {
+    /*댓글을 입력하세요_입력란*/
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.08);
+    border: none;
+    padding: 10px 20px 4px 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    width: 95%;
+    height: 35px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    resize: none;
+  }
+  .commentSubmit {
+    /*댓글제출*/
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    font-family: "Inter";
+    border-radius: 20px;
+    padding: 10px;
+    width: 65px;
+    background-color: #4254ff;
+    border: none;
+    cursor: pointer;
+    color: white;
+    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+  .commentSubmitPR{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .marginBox7{
+    height:6vw;
+  }
+  

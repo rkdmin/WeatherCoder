@@ -1,0 +1,105 @@
+.list1 {
+  margin-left: 25px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: rgba(0, 0, 0, 0.7);
+ display: flex;
+ padding-left: 3vw;
+}
+.list1_content{
+  width:40vw;
+  padding-left:4vw;
+}
+.list_area1{
+  padding: 20px;
+}
+.writingBtnPR {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  position: fixed;
+  bottom:100px;
+  right: 20px;
+}
+.writingBtn {
+  padding: 5px 14px;
+  gap: 10px;
+  padding: 10px;
+  width: 80px;
+  background: #4254ff;
+  border: 1px solid #4254ff;
+  border-radius: 20px;
+
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Inter";
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+}
+.writingBtnPR :hover {
+  opacity: 0.93;
+}
+.numFormBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.previousBtn,.nextBtn {
+  margin-right: 3px;
+  background: #4254ff;
+  color:white;
+  padding:4px;
+  border: 2px solid #4254ff;
+  border-radius: 15px;
+  width:3vw;
+}
+
+.list1_article{
+  text-decoration: none;
+  color:#4254ff;
+  font-family: "Inter";
+  font-size: 15px;
+}
+.list1_title{
+  color:grey;
+  font-family: "Inter";
+
+}
+.numberBtn{
+  border:2px solid #4254ff;
+  margin-right: 3px;
+  padding:4px;
+  border-radius: 15px;
+  width:3vw;
+}
+
+
+.buttonList{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.borderHR1 {
+  box-sizing: border-box;
+  margin:0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.noData{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+.borderArea{
+  height:120vh;
+}

@@ -1,0 +1,264 @@
+.Sign_up_container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.Sign_up_container_1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.Sign_up_container_2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    margin-top: 67px;
+    padding-left: 27px;
+}
+.Sign_up_title1{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 128%;
+    /* or 19px */
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin-bottom: 7px;
+}
+.Sign_up_title2{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 128%;
+    /* or 36px */
+    letter-spacing: -0.02em;
+    color: #4254FF;
+    margin-bottom: 5px;
+}
+.Sign_up_title3{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+}
+.Sign_up_loginpage_title{
+    height: 54px;
+    margin-top: 150px;
+    margin-bottom: 23px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 54px;
+    color: #4254FF;
+    text-shadow: 4px -2px 4px rgba(0, 0, 0, 0.1);
+}
+.Sign_up_form,.Sign_up_form2{
+    margin-top: 43px;
+    margin-bottom: 23px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Sign_up_emailtext{
+    height: 11px;
+    width: 228px;
+    padding-left: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 11px;
+    /* identical to box height */
+    color: #000000;
+    margin-bottom: 4px;
+}
+.Sign_up_ID{
+    width: 228px;
+    height: 27px;
+    background: rgba(196, 196, 196, 0.1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin-bottom: 17px;
+    border:0 solid black;
+    padding: 0 20px;
+}
+.Sign_up_normaltext{
+    height: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 10px;
+    /* identical to box height */
+    color: #000000;
+}
+.Sign_up_boldtext{
+    font-weight: 600;
+}
+.Sign_up_bcontainer{
+    display: flex;
+    margin-top: 5px;
+}
+.Sign_up_mh-10{
+    margin: 0 5px;
+}
+.Sign_up_in{
+    margin-top: 12px;
+    width: 228px;
+    height: 27px;
+    background: #4254FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: none;
+}
+.Sign_up_submit{
+    width: 42px;
+    height: 15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+    text-align: center;
+    color: #FFFFFF;
+}
+.Sign_up_selectbox{
+    width: 285px;
+    height: 40px;
+    /*background: #FFFFFF;*/
+    /*border: 1px solid #4254FF;*/
+    border-radius: 8px;
+    background: #F8F9FA;
+    border: 1px solid #CED4DA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.Sign_up_selectbox__active{
+    background: #FFFFFF;
+    border: 1px solid #4254FF;
+    margin-bottom: 0px;
+}
+.Sign_up_selectlabel{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #54595E;
+    flex: 1;
+    margin-left: 20px;
+}
+.Sign_up_selectboxright{
+    width: 12px;
+    margin-right: 20px;
+    color: gray;
+}
+.Sign_up_selectcontainer{
+    width: 285px;
+    /*display: flex;*/
+    display: none;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 1px 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-bottom: 14px;
+}
+.Sign_up_selectcontainer__active{
+    display: flex;
+}
+.Sign_up_selecteachrow{
+    margin-left: 24px;
+    display: flex;
+    height: 43px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.Sign_up_radiobtn{
+    width: 18px;
+    height: 18px;
+    background: white;
+    border: 2px solid gray;
+    border-radius: 6px;
+}
+input.Sign_up_radiobtn[type="radio"] {
+    appearance: none;
+    border: 1px solid #d3d3d3;
+    width: 18px;
+    height: 18px;
+    content: none;
+    outline: none;
+    margin: 0;
+    /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
+}
+input[type="radio"].Sign_up_radiobtn:checked {
+    appearance: none;
+    outline: none;
+    padding: 0;
+    content: none;
+    border: none;
+    background-color: blue;
+    border: 1px solid blue;
+}
+input[type="radio"].Sign_up_radiobtn:checked::before{
+    position: absolute;
+    color: white !important;
+    content: "\00A0\2713\00A0" !important;
+    border: 1px solid blue;
+    font-weight: bolder;
+    font-size: 11px;
+}
+.checkbox_selector{
+    display: flex;
+    margin:10px;
+}
+.Sign_up_radiolabel{
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    /*color: #4254FF;*/
+    color: #54595E;
+    margin-left: 10px;
+}
+.Sign_Up_button{
+    margin-top: 12px;
+    width: 228px;
+    height: 27px;
+    background: #4254FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.marginBox3{
+    height:12vh;
+}
