@@ -1,7 +1,6 @@
 package com.example.weatherCoder.controller;
 
 import com.example.weatherCoder.dto.ArticleDto;
-import com.example.weatherCoder.entity.Article;
 import com.example.weatherCoder.exception.ArticleException;
 import com.example.weatherCoder.service.ArticleService;
 import com.example.weatherCoder.type.ErrorCode;
@@ -10,8 +9,8 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -70,6 +69,11 @@ public class ArticleController {
         articleService.delete(id);
 
         return "게시글 삭제가 완료되었습니다.";
+    }
+
+    @GetMapping("/articles/title/{title}")
+    public Page<ArticleDto> showListByTitle(@PathVariable String title, final Pageable pageable){
+        return articleService.showListByTitle(title, pageable);
     }
 
     private static void validation(BindingResult bindingResult) {

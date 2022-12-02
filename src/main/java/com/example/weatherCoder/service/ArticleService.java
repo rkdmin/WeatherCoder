@@ -10,6 +10,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -100,5 +102,14 @@ public class ArticleService {
         );
         // 결과값 반환
         return articleList;
+    }
+
+    /**
+     * 제목으로 게시글 검색
+     * @param pageable
+     * @return
+     */
+    public Page<ArticleDto> showListByTitle(String title, Pageable pageable) {
+        return articleRepository.findByTitleContaining(title, pageable).map(article -> ArticleDto.toDto(article));
     }
 }

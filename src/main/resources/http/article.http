@@ -6,12 +6,16 @@ Accept: application/json
 GET http://localhost:8080/articles/4
 Accept: application/json
 
-### 게시판 작성
+### 게시글 제목으로 읽기
+GET http://localhost:8080/articles/title/시
+Accept: application/json
+
+### 게시글 작성
 POST http://localhost:8080/articles/new
 Content-Type: application/json
 
 {
-  "title": "게시글",
+  "title": "게시글5",
   "content": "게시글 입니다."
 }
 

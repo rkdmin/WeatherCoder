@@ -27,4 +27,6 @@ public class Clothes {
     private int weight;
 
     private String styleName;
+
+    private String brandUrl;
 }
