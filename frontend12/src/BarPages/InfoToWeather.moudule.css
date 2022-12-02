@@ -1,0 +1,115 @@
+.imgBox{
+    display: flex;
+   align-items: center;
+    position: relative;
+    transition: transform 1s;
+    height:110vh;
+}
+.imgBoxChild1{
+    border:2px solid rgb(217, 217, 217);
+    box-shadow: 3px 2px 13px 3px rgb(192, 192, 192);
+    border-radius: 15px;
+    width:60%;
+    height: 100vh;
+    margin-left:28vw;
+    margin-top: 5vh;
+}
+.hrederBox{
+    display: flex;
+    justify-content: space-between;
+    width: 95vw;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.imgBoxChild2{
+    border:2px solid rgb(217, 217, 217);
+    box-shadow: 3px 3px 13px 3px rgb(192, 192, 192);
+    border-radius: 15px;
+    width:60%;
+    height: 100vh;
+    margin-left:55vw;
+    margin-top: 5vh;
+}
+.img1{
+    width: 45vw;
+    height: 80vh;
+    border-radius: 30px;
+    margin-top:9vh;
+}
+.img2{
+    width: 45vw;
+    height: 80vh;
+    border-radius: 30px;
+    margin-top:9vh;
+
+}
+.contanier{
+    overflow: hidden;
+}
+.rainText,.left,.right{
+    position: absolute;
+}
+.rainText{
+    bottom:20%;
+    right: 30%;
+    border-radius: 10px;
+    padding:0px 8px 0px 8px;
+}
+.left{
+    /* top:140%; * 모바일일때*/
+    top:70%;
+    width:5vw;
+    height:10vh;
+    border-radius: 20px;
+}
+.right{
+    top:70%;
+    right: 20px; 
+    width:5vw;
+    height:10vh;
+    border-radius: 20px;
+}
+.no1Text{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style:inherit;
+    font-weight: 600;
+    font-size: 25px;
+    color:gray;
+    margin-left: 7px;
+}
+.borderHR111 {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .borderHR113 {
+    border-top: 1px solid white;
+    margin-top: 40px;
+  }
+  .unLoginForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .unLoginButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:3px solid #4254FF;
+    border-radius: 15px;
+    width:40vw;
+    margin-top: 25px;
+    margin-left: 20px;
+    height:5vh;
+  }
+.unButton{
+    width:34.5vw;
+    border-radius: 15px;
+    border:1px solid white;
+}
+
+.tRound{
+    margin:10px;
+    font-style:inherit;
+    font-weight: 600;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style:inherit;
+}

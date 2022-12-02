@@ -3,9 +3,9 @@ POST http://localhost:8080/suggest1-non-member
 Content-Type: application/json
 
 {
-  "lowTemp" : 5,
-  "highTemp" : 15.97,
-  "gender" : "남성"
+  "lowTemp" : 8,
+  "highTemp" : 12,
+  "gender" : "여성"
 }
 
 ### suggest2

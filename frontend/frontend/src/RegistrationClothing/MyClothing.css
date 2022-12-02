@@ -1,0 +1,139 @@
+.Myadress_container{
+    height: 130vh;
+    padding-bottom: 73px;
+    overflow: hidden;
+    width: 100vw;
+}
+.Myadress_main_component
+.Myadress_title
+.Myadress_submit
+.Myadress_innercontainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /*padding-bottom: 73px;*/
+    overflow-y: scroll;
+}
+.Myadress_pageback{
+    margin-top: 31px;
+    margin-left: 31px;
+    margin-bottom: 25px;
+}
+.Myadress_title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 128%;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin-bottom: 16px;
+    text-align: center;
+    margin-right: 181px;
+}
+.Myadress_description{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    /* identical to box height */
+    text-align: center;
+    color: #000000;
+    margin-right: 91px;
+}
+.divContanier{
+    display: inline;
+}
+.Myadress_maincontainer_outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Myadress_maincontainer{
+    padding: 0 31px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.Myadress_main_component{
+    margin-top: 40px;
+    width: 50%;
+}
+.Myadress_main_component_title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+.Myadress_submit{
+    margin-top: 40px;
+    width: 304px;
+    height: 41px;
+    background: #4254FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: 1px solid #4254FF;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 23px;
+    /* identical to box height */
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 40px;
+    margin-right: 60px;
+}
+.Myadress_main_component_items{
+    margin-top: 17px;
+    display: flex;
+    align-items: center;
+}
+.Myadress_main_component_item_text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    text-align: center;
+    color: #6C757D;
+    margin-left: 10px;
+}
+.Myadress_main_component_item_check{
+    width: 18px;
+    height: 18px;
+    background: white;
+    border: 2px solid gray;
+    border-radius: 6px;
+}
+input.Myadress_main_component_item_check {
+    appearance: none;
+    border: 1px solid #d3d3d3;
+    width: 18px;
+    height: 18px;
+    content: none;
+    outline: none;
+    margin: 0;
+    /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
+}
+input.Myadress_main_component_item_check:checked {
+    appearance: none;
+    outline: none;
+    padding: 0;
+    content: none;
+    border: none;
+    background-color: blue;
+    border: 1px solid blue;
+    position: relative;
+}
+input.Myadress_main_component_item_check:checked::before{
+    position: absolute;
+    color: white !important;
+    content: "\00A0\2713\00A0" !important;
+    border: 1px solid blue;
+    font-weight: bolder;
+    font-size: 11px;
+}

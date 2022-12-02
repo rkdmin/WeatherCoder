@@ -1,0 +1,109 @@
+.imgBox1{
+    display: flex;
+   align-items: center;
+   position: relative;
+   transition: transform 1s;
+   height:90vh;
+}
+.imgtag1{
+    width:40vw;
+    height:80vh;
+    margin:20px;
+}
+.contanier1{
+    overflow: hidden;
+    height: 110vh;
+}
+
+.imgBox1Child{
+    border:3px solid rgb(225, 223, 223);
+    box-shadow: 3px 3px 13px 3px rgb(220, 220, 220);
+    border-radius: 15px;
+    margin-left:28vw;
+    width:60%;
+    margin-top: 60px;
+}
+.imgBox2Child{
+    border:3px solid rgb(217, 217, 217);
+    box-shadow: 3px 3px 13px 3px rgb(230, 230, 230);
+    border-radius: 15px;
+    margin-left:55vw;
+    width:60%;
+    margin-top: 60px;
+}
+.rainText123,.rainText134,.left1,.right1{
+    position: absolute;
+}
+.rainText123{
+    bottom: 15%;
+    right: 33%;
+    border-radius: 10px;
+    padding:0px 8px 0px 8px;
+}
+.redFo{
+    display: flex;
+    justify-content: space-between;
+    width: 95vw;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.rainText134{
+    bottom: 15%;
+    /* right: 23%; */
+    border-radius: 10px;
+    padding:0px 8px 0px 8px;
+}
+.left1{
+    /* top:140%; * 모바일일때*/
+    top:50%;
+    left: 20px;
+    width:50px;
+    height:50px;
+    border-radius: 20px;
+    background-color: rgb(55, 110, 211);
+    color:white;
+    border: 3px solid white;
+}
+.tempText{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style:inherit;
+    font-weight: 600;
+    font-size:24px;
+    color:gray;
+}
+.right1{
+    top:50%;
+    right: 20px; 
+    width:50px;
+    height:50px;
+    font-weight:900;
+    border-radius: 20px;
+    background-color: rgb(55, 110, 211);
+    color:white;
+    border: 3px solid white;
+}
+.borderHR1{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  .errorMessage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+  }
+.marginBox5{
+    height:15vh;
+}
+.header_title_content{
+    margin:10px;
+    font-style:inherit;
+    font-weight: 600;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style:inherit;
+}
+.borderHR181 {
+    border-top: 1px solid white;
+    margin-top: 20px;
+  }

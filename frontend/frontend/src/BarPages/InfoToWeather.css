@@ -1,0 +1,111 @@
+.InfoToWeather_gubun{
+    background: #FFFFFF;
+    border: 2px solid #4254FF;
+    border-radius: 34px;
+    display: flex;
+    margin: 10px auto 0 auto;
+    width: 295px;
+    padding: 1px;
+}
+.InfoToWeather_gubun_radiobtn_active{
+    border-radius: 100px;
+    width: 149px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.InfoToWeather_gubun_radiobtn_text_active{
+    font-family:'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.084px;
+}
+.InfoToWeather_gubun_radiobtn{
+    display: flex;
+    border-radius: 100px;
+    align-items: center;
+    justify-content: center;
+    width: 149px;
+}
+.Recommendation_card_container_inner_Box{
+    display: flex;
+    height: 90vh;
+    width:200vw;
+    padding-top: 5px;
+    position: relative;
+    transition: transform 1s;
+    padding-right: 27px;
+}
+.Recommendation_card_container_inner{
+    width:95vw;
+    margin-top:7px;
+    height: 65vh;
+}
+.errorText{
+    text-align: center;
+    color:#4254FF;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.084px;
+}
+.leftButton{
+   position: absolute;
+   top:280px;
+   left:5vw;
+   width: 45px;
+   height: 45px;
+   border-radius: 15px;
+   border:3px solid white;
+   background-color:#4254FF;
+   color:white;
+}
+.rightButton{
+    position: absolute;
+    top:280px;
+    left:91vw;
+    width:45px;
+    height: 45px;
+    border-radius: 15px;
+    border:3px solid white;
+    background-color:#4254FF;
+    color:white;
+ }
+ .imgTag{
+    width:50vw;
+    height:50vh;
+    margin-left: 280px;
+ }
+.InfoToWeather_gubun_radiobtn_text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.084px;
+}
+.InfoToWeather_card_container{
+    height: calc( 100% - 103px);
+    padding-top: 5px;
+
+}
+@media(max-width:600px){
+    .leftButton{
+       left:6vw;
+    }
+    .rightButton{
+        left:86.5vw;
+    }
+    .imgTag{
+        margin-left: 100px;
+    }
+}
+

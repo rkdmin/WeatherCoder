@@ -1,0 +1,189 @@
+.commentContents {
+  /*글상세페이지_작성된_댓글내용*/
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  /* border: none; */
+  padding: 4px 4px 4px 15px;
+  border-radius: 20px;
+  margin-top: 25px;
+  margin-left: 10px;
+  width: 95%;
+  height: 35px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.commentTitle {
+  /*댓글 제목*/
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.comment_nickname {
+  /*댓글 닉네임*/
+  font-family: "Inter";
+  margin-top: 7px;
+  margin-left: 15px;
+  font-weight: 430;
+  font-size: 13px;
+}
+.comment {
+  /*댓글내용*/
+  /* box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.04); */
+  margin-left: 15px;
+  margin-top: 15px;
+  height: 35px;
+  font-size: 13px;
+  font-weight: 400;
+}
+.borderHR {
+  /*댓글 작성하기 위*/
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+.comment {
+  font-family: "Inter";
+}
+.commentContentsPR {
+  display: flex;
+  margin-left: 20px;
+}
+.commentContents {
+  /*댓글 삭제,수정하기_버튼*/
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-family: "Inter";
+  border-radius: 20px;
+  padding: 10px;
+  width: 75px;
+  background-color: #4254ff;
+  border: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.commentWriteTitle {
+  /*댓글 작성하기*/
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+.commentEdit {
+  /*댓글 수정란(클릭시)*/
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 10px 20px 4px 15px;
+  border-radius: 20px;
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  width: 95%;
+  height: 35px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.commentEditSubmitBtn {
+  /*댓글 수정제출버튼*/
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-family: "Inter";
+  border-radius: 20px;
+  padding: 10px;
+  width: 65px;
+  background-color: #4254ff;
+  border: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+.nickname {
+  /*닉네임을 입력하세요*/
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 4px 4px 4px 15px;
+  border-radius: 20px;
+  margin-left: 10px;
+  width: 100%;
+  height: 35px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+.commentField {
+  /*댓글을 입력하세요_입력란*/
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 10px 20px 4px 15px;
+  border-radius: 20px;
+  /* margin-top: 25px; */
+  margin-left: 5px;
+  margin-right: 7px;
+  width: 230%;
+  height: 35px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  resize: none;
+}
+.commentWriteTitle {
+  font-family: "Inter";
+}
+.commentSubmitPR {
+  /*댓글 작성하기 박스*/
+  display: flex;
+  margin-left: 5px;
+  margin-right: 10px;
+  align-items: center;
+  padding-bottom: 8px;
+  background-color: white;
+}
+.commentSubmit {
+  /*댓글제출버튼*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-family: "Inter";
+  border-radius: 20px;
+  width: 180px;
+  height: 35px;
+  background-color: #4254ff;
+  border: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+}
+.commentSubmit:hover {
+  opacity: 0.97;
+}
+.borderHR_comment {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.comment_HR {
+  border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+.comment_div {
+  border: 3px solid blue;
+}

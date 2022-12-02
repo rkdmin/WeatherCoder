@@ -1,0 +1,66 @@
+.list_area {
+  margin-top: 28px;
+}
+.marginBox60{
+  height:136vh;
+}
+.list {
+  /*게시판글목록*/
+  margin-left: 25px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: rgba(0, 0, 0, 0.7);
+  flex: 1;
+}
+.writingBtnPR {
+  /*글쓰기버튼의 부모*/
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.writingBtn {
+  /*글쓰기버튼*/
+  padding: 5px 14px;
+  gap: 10px;
+  /*width: 70px;*/
+  padding: 10px;
+  width: 80px;
+  background: #4254ff;
+  border: 1px solid #4254ff;
+  border-radius: 20px;
+  height:5vh;
+
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Inter";
+  /* identical to box height, or 100% */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+}
+.writingBtnPR :hover {
+  opacity: 0.93;
+}
+.numFormBtn {
+  /*글목록버튼_세트*/
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.previousBtn {
+  /*글목록이전버튼*/
+  margin-right: 3px;
+}
+.numberBtn {
+  /*글목록숫자버튼*/
+  margin-right: 3px;
+}
+.marginBox11113{
+  height:20vh;
+}

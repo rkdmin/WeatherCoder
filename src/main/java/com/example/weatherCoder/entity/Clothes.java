@@ -27,5 +27,4 @@ public class Clothes {
     private int weight;
 
     private String styleName;
-
 }

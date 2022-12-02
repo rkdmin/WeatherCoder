@@ -1,0 +1,74 @@
+.top_innercontainer {
+  /*글쓰기 제목부분 컨테이너*/
+  margin-top: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.marginBox1414{
+  height:15vh;
+}
+
+.writingName {
+  /*글쓰기_페이지제목*/
+  font-weight: 650;
+  font-size: 20px;
+  font-family: "Inter";
+  align-items: center;
+}
+.writingTitle {
+  /*게시글제목*/
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 4px 4px 4px 15px;
+  border-radius: 20px;
+  margin-top: 25px;
+  margin-left: 15px;
+  width: 95%;
+  height: 35px;
+  font-size: 13px;
+}
+.writingFillOut {
+  /*게시글작성란*/
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 4px 4px 4px 15px;
+  border-radius: 20px;
+  margin-top: 3px;
+  margin-left: 15px;
+  padding-top: 13px;
+  font-family: "Inter";
+  padding-left: 10px;
+  width: 95%;
+  height: 450px;
+  font-size: 13px;
+}
+.writingSubmitPR {
+  /*게시글제출버튼_부모*/
+  display: flex;
+  justify-content: center;
+}
+.writingSubmitBtn {
+  /*게시글제출버튼*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-family: "Inter";
+  border-radius: 20px;
+  width: 65px;
+  height: 35px;
+  background-color: #4254ff;
+  border: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.1);
+}
+.writingSubmitPR :hover {
+  opacity: 0.93;
+}
