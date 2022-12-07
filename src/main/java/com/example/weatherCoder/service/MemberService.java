@@ -9,13 +9,15 @@ import com.example.weatherCoder.exception.MemberException;
 import com.example.weatherCoder.repository.MemberRepository;
 import com.example.weatherCoder.repository.MemberStyleRepository;
 import com.example.weatherCoder.security.SHA256;
-import com.example.weatherCoder.type.ErrorCode;
 import com.example.weatherCoder.type.MemberStatus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,12 +33,18 @@ import static com.example.weatherCoder.type.ErrorCode.INVALID_EMAIL_KEY;
 @Slf4j
 @RequiredArgsConstructor
 @Transactional
-public class MemberService{
+public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final MailComponents mailComponents;
     private final MemberStyleRepository memberStyleRepository;
 
     private final MemberStyleService memberStyleService;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return this.memberRepository.findByUsername(username)
+            .orElseThrow(() -> new MemberException(MEMBER_EMPTY));
+    }
 
     /**
      * 회원가입
@@ -86,7 +94,7 @@ public class MemberService{
      * @param emailKey
      */
     private void sendEmailFromEmail(MemberDto.Request request, String emailKey) {
-        String email = request.getEmail();
+        String email = request.getUsername();
         String subject = "WeatherCoder 가입을 축하드립니다. ";
         String text = "<p>WeatherCoder 가입을 축하드립니다.</p>" +
                 "<p>아래 링크를 클릭하셔서 가입을 완료 하세요.</p>" +
@@ -128,7 +136,7 @@ public class MemberService{
      */
     private void validCreate(MemberDto.Request request) {
         // 1. 중복된 이메일
-        Optional<Member> checkEmail = memberRepository.findByEmail(request.getEmail());
+        Optional<Member> checkEmail = memberRepository.findByUsername(request.getUsername());
         if(checkEmail.isPresent()){
             throw new MemberException(ALREADY_EXISTS_EMAIL);
         }
@@ -151,12 +159,12 @@ public class MemberService{
         SHA256 sha256 = new SHA256();
         String secPassword = sha256.encrypt(password);// 불러온 비밀번호 암호화
         // 2. 존재하지 회원정보
-        Member member = memberRepository.findByEmailAndPassword(email, secPassword).orElseThrow(
+        Member member = memberRepository.findByUsernameAndPassword(email, secPassword).orElseThrow(
             () -> new MemberException(MEMBER_EMPTY, "이메일 또는 패스워드가 일치하지 않습니다.")
         );
 
         // 회원의 스타일 가져오기
-        List<MemberStyle> memberStyleList = memberStyleRepository.findAllByMember_Email(email);
+        List<MemberStyle> memberStyleList = memberStyleRepository.findAllByMember_Username(email);
         List<String> styleList = new ArrayList<>();
         for(MemberStyle memberStyle: memberStyleList){
             styleList.add(memberStyle.getStyle().getStyleName());
@@ -174,13 +182,13 @@ public class MemberService{
         SHA256 sha256 = new SHA256();
         String secPassword = sha256.encrypt(request.getPassword());// 기존 비밀번호 암호화
         Member member =
-            memberRepository.findByEmailAndPassword(request.getEmail(), secPassword).orElseThrow(
+            memberRepository.findByUsernameAndPassword(request.getUsername(), secPassword).orElseThrow(
                 () -> new MemberException(MEMBER_EMPTY, "패스워드가 일치하지 않습니다.")
             );
 
         member.setPassword(sha256.encrypt(request.getNewPassword()));// 새로운 비밀번호 암호화
         member.setPasswordKey(UUID.randomUUID().toString());// 패스워드 키 발급
-        sendEmailFromPassword(request.getEmail(), member.getPassword(), member.getPasswordKey());// 메일전송
+        sendEmailFromPassword(request.getUsername(), member.getPassword(), member.getPasswordKey());// 메일전송
     }
 
     /**

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface MemberStyleRepository extends JpaRepository<MemberStyle, Long> {
-    List<MemberStyle> findAllByMember_Email(String email);
+    List<MemberStyle> findAllByMember_Username(String username);
 
-    void deleteAllByMember_Email(String email);
+    void deleteAllByMember_Username(String username);
 }

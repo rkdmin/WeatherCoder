@@ -9,7 +9,6 @@ import com.example.weatherCoder.exception.CategoryException;
 import com.example.weatherCoder.repository.CategoryRepository;
 import com.example.weatherCoder.repository.MemberCategoryRepository;
 import com.example.weatherCoder.repository.MemberRepository;
-import com.example.weatherCoder.type.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,7 +31,7 @@ public class MemberCategoryService {
     private final MemberRepository memberRepository;
 
     // 멤버-카테고리 등록
-    public void registration(CategoryParam.Request request){
+    public void registration(String username, CategoryParam.Request request){
         // 에러처리
         validationRegistration(request);
 
@@ -58,13 +57,13 @@ public class MemberCategoryService {
 
         // 회원 찾기
         Optional<Member> optionalMember =
-                memberRepository.findByEmail(request.getEmail());
+                memberRepository.findByUsername(username);
         if(!optionalMember.isPresent()){
             throw new CategoryException(MEMBER_EMPTY);
         }
 
         // 회원의 카테고리 초기화
-        memberCategoryRepository.deleteAllByMember_Email(request.getEmail());
+        memberCategoryRepository.deleteAllByMember_Username(username);
 
         // 회원-카테고리 테이블 insert
         for(Category category: categoryList){

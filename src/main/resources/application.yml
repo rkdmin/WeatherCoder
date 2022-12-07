@@ -25,3 +25,6 @@ spring:
         smtp:
           starttls:
             enable: true
+
+  jwt:
+    secret: cmtkbWluLWZpdG1lLXNwcmluZy1ib290LWp3dC1zZWNyZXQta2V5

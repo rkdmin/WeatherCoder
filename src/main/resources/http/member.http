@@ -3,8 +3,8 @@ POST http://localhost:8080/join
 Content-Type: application/json
 
 {
-  "email": "123@123",
-  "password": "rkdmin6858!",
+  "username": "123@123",
+  "password": "abc123!!",
   "gender" : "남성",
   "age": 2,
   "height": 5,
@@ -17,16 +17,16 @@ POST http://localhost:8080/login
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@naver.com",
-  "password": "a1234567!"
+  "username": "123@123",
+  "password": "abc123!!"
 }
 
 ### 회원 스타일 수정
 POST http://localhost:8080/my-style
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjNAMTIzIiwicm9sZXMiOiJST0xFX1VTRVIiLCJpYXQiOjE2NzA0MzQ5MTYsImV4cCI6MTY3MDQzODUxNn0.JwMYredLTBwmpl7VQxi68keGh-fDSgag2uhOgcqipRyUTjEAsHaTCGbw3pB-zuwNc15aHgM-4fDyvMLfU0Ubzw
 Content-Type: application/json
 
 {
-  "email": "22rkdmin@naver.cm",
   "styleList" : ["댄디", "놈코어"]
 }
 

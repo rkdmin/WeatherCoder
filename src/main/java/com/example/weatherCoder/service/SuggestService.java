@@ -101,15 +101,15 @@ public class SuggestService {
             throw new SuggestException(INVALID_REQUEST);
         }
 
-        String email = dtoList.get(0).getEmail();// 회원 이메일
-        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        String email = dtoList.get(0).getUsername();// 회원 이메일
+        Optional<Member> optionalMember = memberRepository.findByUsername(email);
         if(!optionalMember.isPresent()){
             throw new SuggestException(MEMBER_EMPTY);
         }
 
         // 회원-스타일 전부 불러오기
         List<MemberStyle> memberStyleList
-                = memberStyleRepository.findAllByMember_Email(email);
+                = memberStyleRepository.findAllByMember_Username(email);
         if(memberStyleList.size() == 0){
             throw new SuggestException(INVALID_REQUEST);
         }
@@ -179,9 +179,9 @@ public class SuggestService {
         lowTempDto = dtoList.get(0);
         highTempDto = dtoList.get(1);
 
-        String email = lowTempDto.getEmail();// 회원 이메일
+        String email = lowTempDto.getUsername();// 회원 이메일
         // 해당 member의 category 모두 불러오기
-        List<MemberCategory> memberCategoryList = memberCategoryRepository.findAllByMember_Email(email);
+        List<MemberCategory> memberCategoryList = memberCategoryRepository.findAllByMember_Username(email);
         if(memberCategoryList.size() == 0){
             throw new SuggestException(CATEGORY_EMPTY, "카테고리를 등록해 주세요");
         }

@@ -2,8 +2,10 @@ package com.example.weatherCoder.exception;
 
 
 import com.example.weatherCoder.dto.ErrorResponse;
+import io.jsonwebtoken.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -55,6 +57,20 @@ public class GlobalExceptionHandler {
         log.error("DataIntegrityViolation is occurred");
 
         return new ErrorResponse(INVALID_REQUEST, INVALID_REQUEST.getDescription());
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ErrorResponse handelAccessDeniedException(AccessDeniedException e){
+        log.error("{} is occurred", e.getMessage());
+
+        return new ErrorResponse(INTERNAL_SERVER_ERROR, e.getMessage());
+    }
+
+    @ExceptionHandler(SignatureException.class)
+    public ErrorResponse handelSignatureException(SignatureException e){
+        log.error("{} is occurred", e.getMessage());
+
+        return new ErrorResponse(INTERNAL_SERVER_ERROR, e.getMessage());
     }
 
 //     다 거르고 마지막 예외

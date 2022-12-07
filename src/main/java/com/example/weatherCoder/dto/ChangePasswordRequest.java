@@ -21,7 +21,7 @@ import lombok.Setter;
 public class ChangePasswordRequest {
     @NotBlank(message = "이메일을 입력하세요.")
     @Email(message = "이메일 형식에 맞지 않습니다.")
-    private String email;// 이메일
+    private String username;// 이메일
 
     @NotBlank(message = "비밀번호를 입력하세요.")
     @Pattern(regexp="^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,16}$", message = "비밀번호는 영어, 숫자, 특수문자 포함해서 8~16자리 이내로 입력해주세요.")

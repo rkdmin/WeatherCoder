@@ -1,9 +1,9 @@
 ### 카테고리 등록
 POST http://localhost:8080/my-clothes
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjNAMTIzIiwicm9sZXMiOiJST0xFX1VTRVIiLCJpYXQiOjE2NzA0MzQ5MTYsImV4cCI6MTY3MDQzODUxNn0.JwMYredLTBwmpl7VQxi68keGh-fDSgag2uhOgcqipRyUTjEAsHaTCGbw3pB-zuwNc15aHgM-4fDyvMLfU0Ubzw
 Content-Type: application/json
 
 {
-  "email" : "22rkdmin@naver.cm",
   "seasonList" : [
     {
       "seasonName" : "봄",

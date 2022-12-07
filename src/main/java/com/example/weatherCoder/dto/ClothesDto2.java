@@ -12,5 +12,5 @@ import lombok.ToString;
 public class ClothesDto2 {
     private int temp;// 기온
     private boolean isOuter;// 겉옷번호 0이면 x
-    private String email;
+    private String username;
 }

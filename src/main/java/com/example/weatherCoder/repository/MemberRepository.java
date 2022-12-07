@@ -11,13 +11,13 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 //    Member findByUserId(@Param("userId")String userId);
 
     // 이메일 중복 조회
-    Optional<Member> findByEmail(String email);
+    Optional<Member> findByUsername(String username);
 
     // 이메일 키 찾기
     Optional<Member> findByEmailKey(String emailKey);
 
     // 로그인 프로세스
-    Optional<Member> findByEmailAndPassword(String userId, String secPassword);
+    Optional<Member> findByUsernameAndPassword(String username, String secPassword);
 
     // 패스워드 키 찾기
     Optional<Member> findByPasswordKey(String passwordKey);

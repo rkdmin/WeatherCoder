@@ -48,8 +48,8 @@ public class MemberStyleService {
         }
     }
 
-    public void update(Request request) {
-        Optional<Member> optionalMember = memberRepository.findByEmail(request.getEmail());
+    public void update(String username, Request request) {
+        Optional<Member> optionalMember = memberRepository.findByUsername(username);
         if(optionalMember.isEmpty()){
             throw new MemberException(ErrorCode.MEMBER_EMPTY);
         }
@@ -58,7 +58,7 @@ public class MemberStyleService {
         }
 
         // 스타일 먼저 초기화
-        memberStyleRepository.deleteAllByMember_Email(request.getEmail());
+        memberStyleRepository.deleteAllByMember_Username(username);
 
         for(String styleName: request.getStyleList()){
             Optional<Style> optionalStyle = styleRepository.findByStyleName(styleName);

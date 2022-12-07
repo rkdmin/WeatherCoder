@@ -8,6 +8,7 @@ import com.example.weatherCoder.service.SuggestService;
 import com.example.weatherCoder.type.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,7 @@ public class SuggestController {
         return Suggest1.Response.toResponse(list);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/suggest2")
     public Suggest2.Response suggest2(
             @Valid @RequestBody Suggest2.Request request,
@@ -58,6 +60,7 @@ public class SuggestController {
         return Suggest2.Response.toResponse(list);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/suggest3")
     public Suggest2.Response suggest3(
         @Valid @RequestBody Suggest2.Request request,
@@ -74,5 +77,4 @@ public class SuggestController {
 
         return Suggest2.Response.toResponse(list);
     }
-
 }

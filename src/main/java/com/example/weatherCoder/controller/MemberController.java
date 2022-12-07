@@ -5,16 +5,19 @@ import com.example.weatherCoder.dto.ChangePasswordRequest;
 import com.example.weatherCoder.dto.MemberDto;
 import com.example.weatherCoder.dto.StyleParam;
 import com.example.weatherCoder.exception.MemberException;
+import com.example.weatherCoder.security.TokenProvider;
 import com.example.weatherCoder.service.MemberCategoryService;
 import com.example.weatherCoder.service.MemberService;
 import com.example.weatherCoder.service.MemberStyleService;
 import com.example.weatherCoder.type.ErrorCode;
 import java.security.NoSuchAlgorithmException;
+import java.security.Principal;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +32,7 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberCategoryService memberCategoryService;
     private final MemberStyleService memberStyleService;
+    private final TokenProvider tokenProvider;
 
     @PostMapping("/join")
     public String create(@RequestBody @Valid MemberDto.Request request,
@@ -51,24 +55,26 @@ public class MemberController {
         return "이메일 인증이 완료되었습니다.";
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/my-clothes")
-    public String setCategory(@RequestBody @Valid CategoryParam.Request request,
+    public String setCategory(Principal principal, @RequestBody @Valid CategoryParam.Request request,
                               BindingResult bindingResult){
         // @valid 발생
         validation(bindingResult);
 
-        memberCategoryService.registration(request);
+        memberCategoryService.registration(principal.getName(), request);
 
         return "카테고리 저장이 완료되었습니다.";
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/my-style")
-    public String setStyle(@RequestBody @Valid StyleParam.Request request,
+    public String setStyle(Principal principal, @RequestBody @Valid StyleParam.Request request,
         BindingResult bindingResult){
         // @valid 발생
         validation(bindingResult);
 
-        memberStyleService.update(request);
+        memberStyleService.update(principal.getName(), request);
 
         return "스타일 수정이 완료되었습니다.";
     }
@@ -107,7 +113,11 @@ public class MemberController {
     @PostMapping("/login")
     public MemberDto.Response login(@RequestBody MemberDto.Request request)
         throws NoSuchAlgorithmException {
-        return memberService.login(request.getEmail(), request.getPassword());
+
+        MemberDto.Response response = memberService.login(request.getUsername(), request.getPassword());
+        String token = tokenProvider.generateToken(response.getUsername(), response.getRoles());
+        response.setToken(token);
+        return response;
     }
 //
 //    // 아이디 찾기

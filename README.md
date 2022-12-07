@@ -6,7 +6,7 @@ POST http://localhost:8080/join
 Content-Type: application/json
 
 {  
-  "email": "?",  
+  "username": "?",  
   "password": "?",  
   "gender" : "?",  
   "age": ?,  
@@ -30,19 +30,21 @@ Content-Type: application/json
   "errorMessage": "비밀번호는 영어, 숫자, 특수문자 포함해서 8~16자리 이내로 입력해주세요."
   }
 - {
-  "errorCode": "ALREADY_EXISTS_EMAIL",
-  "errorMessage": "이미 존재하는 이메일입니다."
+  "errorCode": "ALREADY_EXISTS_EMAIL",  
+  "errorMessage": "이미 존재하는 이메일입니다."  
   }
-- 회원가입이 완료되었습니다.
+- 회원가입이 완료되었습니다.  
+[참고] : 비밀번호는 영문숫자특수문자포함 8자리 이상 20자리 이하
+
 
 ### 로그인
 POST http://localhost:8080/login  
 Content-Type: application/json
 
 {  
-"email": "22rkdmin@2naver.cm",  
-"password": "a12345678!"  
-}    
+"username": "?",  
+"password": "?"  
+}      
 
 받는데이터
 - {
@@ -50,7 +52,7 @@ Content-Type: application/json
   "errorMessage": "이메일 또는 패스워드가 일치하지 않습니다."
   }
 - {
-  "email": "?",
+  "username": "?",
   "gender": "?",
   "age": ?,
   "height": ?,
@@ -61,14 +63,16 @@ Content-Type: application/json
   "?"
   ],
   "regDt": "?"
+  },  
+  "roles": "?",
+  "token": "?"
   }
 
 ### 회원 카테고리 등록 / 수정    
 POST http://localhost:8080/my-clothes   
 Content-Type: application/json
 
-{  
-  "email" : "?",      
+{
   "seasonList" : [  
   {
   "seasonName" : "?",
@@ -99,8 +103,7 @@ Content-Type: application/json
 POST http://localhost:8080/my-style  
 Content-Type: application/json
 
-{    
-"email" : "?",      
+{
 "styleList" : ["?", "?"]  
 }  
 
