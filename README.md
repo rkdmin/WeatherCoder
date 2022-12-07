@@ -69,7 +69,8 @@ Content-Type: application/json
   }
 
 ### 회원 카테고리 등록 / 수정    
-POST http://localhost:8080/my-clothes   
+POST http://localhost:8080/my-clothes     
+Authorization: Bearer ey(..생략)  
 Content-Type: application/json
 
 {
@@ -100,7 +101,8 @@ Content-Type: application/json
 - 카테고리 저장이 완료되었습니다.
 
 ### 회원 스타일 수정
-POST http://localhost:8080/my-style  
+POST http://localhost:8080/my-style    
+Authorization: Bearer ey(..생략)  
 Content-Type: application/json
 
 {
@@ -178,12 +180,12 @@ Content-Type: application/json
 
 ### 회원 정보로 옷 추천
 POST http://localhost:8080/suggest2  
+Authorization: Bearer ey(..생략)  
 Content-Type: application/json   
 
 {
 "lowTemp" : ?,
 "highTemp" : ?,
-"email" : "?"
 }
 
 받는데이터
@@ -213,12 +215,12 @@ Content-Type: application/json
 
 ### 회원이 등록한 옷 카테고리로 옷 추천
 POST http://localhost:8080/suggest3  
+Authorization: Bearer ey(..생략)  
 Content-Type: application/json
 
 {
 "lowTemp" : ?,
 "highTemp" : ?,
-"email" : "?"
 }
 
 받는데이터

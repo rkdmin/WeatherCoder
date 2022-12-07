@@ -10,20 +10,20 @@ Content-Type: application/json
 
 ### suggest2
 POST http://localhost:8080/suggest2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjNAMTIzIiwicm9sZXMiOiJST0xFX1VTRVIiLCJpYXQiOjE2NzA0MzQ5MTYsImV4cCI6MTY3MDQzODUxNn0.JwMYredLTBwmpl7VQxi68keGh-fDSgag2uhOgcqipRyUTjEAsHaTCGbw3pB-zuwNc15aHgM-4fDyvMLfU0Ubzw
 Content-Type: application/json
 
 {
   "lowTemp" : 23,
-  "highTemp" : 13,
-  "email" : "22rkdmin@naver.cm"
+  "highTemp" : 13
 }
 
 ### suggest3
 POST http://localhost:8080/suggest3
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjNAMTIzIiwicm9sZXMiOiJST0xFX1VTRVIiLCJpYXQiOjE2NzA0MzQ5MTYsImV4cCI6MTY3MDQzODUxNn0.JwMYredLTBwmpl7VQxi68keGh-fDSgag2uhOgcqipRyUTjEAsHaTCGbw3pB-zuwNc15aHgM-4fDyvMLfU0Ubzw
 Content-Type: application/json
 
 {
-  "lowTemp" : 18,
-  "highTemp" : 18,
-  "email" : "22rkdmin@naver.cm"
+  "lowTemp" : 11,
+  "highTemp" : 18
 }

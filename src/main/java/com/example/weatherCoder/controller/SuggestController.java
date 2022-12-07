@@ -6,6 +6,7 @@ import com.example.weatherCoder.exception.MemberException;
 import com.example.weatherCoder.service.SuggestService;
 
 import com.example.weatherCoder.type.ErrorCode;
+import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -43,8 +44,7 @@ public class SuggestController {
 
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/suggest2")
-    public Suggest2.Response suggest2(
-            @Valid @RequestBody Suggest2.Request request,
+    public Suggest2.Response suggest2(Principal principal, @Valid @RequestBody Suggest2.Request request,
             BindingResult bindingResult
     ){
         // @valid 발생
@@ -53,8 +53,7 @@ public class SuggestController {
             throw new MemberException(ErrorCode.INVALID_REQUEST, list.get(0).getDefaultMessage().toString());
         }
 
-        List<Long> list;
-        list = clothesService.suggest2(request.toClothesDtoList());
+        List<Long> list = clothesService.suggest2(request.toClothesDtoList(principal.getName()));
 
         // 비회원이면 추천을 저장하지 않음
         return Suggest2.Response.toResponse(list);
@@ -62,8 +61,7 @@ public class SuggestController {
 
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/suggest3")
-    public Suggest2.Response suggest3(
-        @Valid @RequestBody Suggest2.Request request,
+    public Suggest2.Response suggest3(Principal principal, @Valid @RequestBody Suggest2.Request request,
         BindingResult bindingResult
     ){
         // @valid 발생
@@ -72,8 +70,7 @@ public class SuggestController {
             throw new MemberException(ErrorCode.INVALID_REQUEST, list.get(0).getDefaultMessage().toString());
         }
 
-        List<Long> list;
-        list = clothesService.suggest3(request.toClothesDtoList());
+        List<Long> list = clothesService.suggest3(request.toClothesDtoList(principal.getName()));
 
         return Suggest2.Response.toResponse(list);
     }

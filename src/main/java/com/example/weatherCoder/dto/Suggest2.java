@@ -17,25 +17,23 @@ public class Suggest2 {
         private Integer lowTemp;// 최저기온
         @NotNull(message = "최고기온이 없습니다.")
         private Integer highTemp;// 최고기온
-        @NotBlank(message = "이메일이 없습니다.")
-        private String email;// 회원 이메일
 
         // weatherDto => clothesDtoList
-        public List<ClothesDto2> toClothesDtoList(){
+        public List<ClothesDto2> toClothesDtoList(String username){
             List<ClothesDto2> clothesDto2List = new ArrayList<>();
 
             // 최저기온 옷 넣기
             ClothesDto2 clothesDto2Low;
             // 23도(반팔입을온도) 보다 최고 기온이 높다면 최저기온에서 겉옷 추가
             if(highTemp >= 23){
-                clothesDto2Low = new ClothesDto2(lowTemp, true, email);
+                clothesDto2Low = new ClothesDto2(lowTemp, true, username);
             }else{
-                clothesDto2Low = new ClothesDto2(lowTemp, false, email);
+                clothesDto2Low = new ClothesDto2(lowTemp, false, username);
             }
 
             // 최고기온 옷 넣기
             ClothesDto2 clothesDto2High = new ClothesDto2(highTemp, false,
-                    email);
+                username);
 
             clothesDto2List.add(clothesDto2Low);
             clothesDto2List.add(clothesDto2High);
